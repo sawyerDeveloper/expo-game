@@ -1,4 +1,3 @@
 # expo-game
-Why?
 
-Expo is fun to work with.
+Expo is fun to work with and games are fun to play.
