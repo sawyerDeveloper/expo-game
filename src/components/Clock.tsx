@@ -19,7 +19,7 @@ export const Clock = () => {
 
   return (
     <View style={styles.container}>
-      <Label color='#fff' size={16} text={currentTime} />
+      <Label color='#fff' size={26} text={currentTime} />
     </View>
   );
 };
@@ -27,6 +27,9 @@ export const Clock = () => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    alignItems: 'center',
+    height: 100,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    alignItems: 'center'
   },
 });
