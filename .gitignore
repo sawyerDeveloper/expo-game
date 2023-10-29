@@ -6,6 +6,6 @@ node_modules
 *.key
 *.mobileprovision
 *.orig.*
-
+dist
 # macOS
 .DS_Store
