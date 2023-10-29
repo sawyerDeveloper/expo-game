@@ -15,13 +15,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sawyerdeveloper.expogame"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#000000"
-      }
+      },
+      "package": "com.sawyerdeveloper.expogame"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,6 +33,12 @@
         "projectId": "7529ba2b-414e-4745-8abd-372a04389306"
       }
     },
-    "owner": "sawyerdeveloper"
+    "owner": "sawyerdeveloper",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/7529ba2b-414e-4745-8abd-372a04389306"
+    }
   }
 }

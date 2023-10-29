@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button } from './src/designSystem/Button';
-import { GameView } from './src/components/GameView';
-import { ResultView } from './src/components/ResultView';
+import { Button } from './src/designSystem/ui/Button';
+import { GameView } from './src/components/screens/GameView';
+import { ResultView } from './src/components/screens/ResultView';
 
 export default function App() {
   const [gameStarted, setGameStarted] = useState(false);
