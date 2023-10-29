@@ -4,16 +4,19 @@ import { VSpacer } from '../../designSystem/layout/VSpacer';
 
 export const ResultView = ({ gameWon, scores }) => {
   return (
-    <View>
+    <>
+      <VSpacer height={20} />
       <Text style={styles.label}>You {gameWon ? 'Won!' : 'Lost!'}</Text>
       <VSpacer height={10} />
       <View style={styles.scoreContainer}>
         {scores &&
           scores.map((score) => {
-            return <Label color='white' key={score * score} text={score} />;
+            return (
+              <Label color='white' key={score + Math.random()} text={score} />
+            );
           })}
       </View>
-    </View>
+    </>
   );
 };
 

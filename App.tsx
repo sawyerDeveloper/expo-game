@@ -1,11 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Button } from './src/designSystem/ui/Button';
 import { GameView } from './src/components/screens/GameView';
 import { ResultView } from './src/components/screens/ResultView';
-import { Label } from './src/designSystem/ui/Label';
-import { VSpacer } from './src/designSystem/layout/VSpacer';
+import { IntroView } from './src/components/screens/IntroView';
+import { AppContainer } from './src/designSystem/layout/AppContainer';
 
 export default function App() {
   const [gameStarted, setGameStarted] = useState(false);
@@ -31,32 +28,15 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
+    <AppContainer>
       {!gameStarted ? (
-        <>
-          <Label color='#fb9' text='This is going to be a fun game!' />
-          <VSpacer height={50} />
-          <Button title='Start' onPress={start} />
-        </>
+        <IntroView start={start} />
       ) : (
         <GameView win={win} lose={lose} />
       )}
       {gameWon !== null && !gameStarted && (
-        <>
-          <VSpacer height={20} />
-          <ResultView gameWon={gameWon} scores={scores} />
-        </>
+        <ResultView gameWon={gameWon} scores={scores} />
       )}
-      <StatusBar style='dark' />
-    </View>
+    </AppContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#000',
-  },
-});
