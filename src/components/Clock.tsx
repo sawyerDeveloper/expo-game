@@ -1,10 +1,10 @@
 import { StyleSheet, View } from 'react-native';
 import { Label } from '../designSystem/ui/Label';
-import React, { useEffect, useImperativeHandle, useState } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 
 const CLOCK_TIME: number = 1000;
 
-export const Clock = React.forwardRef((props, ref) => {
+export const Clock = forwardRef((_props, ref) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [startTime] = useState(Date.now());
 
