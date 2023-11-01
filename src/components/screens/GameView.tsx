@@ -5,12 +5,13 @@ import { useRef } from 'react';
 
 export const GameView = ({ win, lose }) => {
   const clock = useRef(null);
-  
+
   return (
     <>
       <Button title='Win' onPress={() => win(clock.current.currentTime)} />
       <VSpacer height={20} />
       <Button title='Lose' onPress={() => lose(clock.current.currentTime)} />
+      <VSpacer height={10} />
       <Clock ref={clock} />
     </>
   );
