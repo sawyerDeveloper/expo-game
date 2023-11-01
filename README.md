@@ -4,6 +4,7 @@ A game built with EXPO SDK and EAS.
 
 It is starting as the shell and then each game pattern or mechanic gets added one at a time as the game unfolds.
 
+Scanning requires Expo Go app.
 
 Latest on Dev:
 
