@@ -2,12 +2,15 @@
 
 A game built with EXPO SDK and EAS.
 
+It is starting as the shell and then each game pattern or mechanic gets added one at a time as the game unfolds.
+
+
 Latest on Dev:
 
-ios:
+-ios:
 
-![ios](https://qr.expo.dev/eas-update?updateId=4189290a-1cf4-41f2-ab68-2eae065a5796&appScheme=exp&host=u.expo.dev)
+![ios](https://qr.expo.dev/eas-update?updateId=c8be96f2-df23-4fc6-80cf-94cbf760efe0&appScheme=exp&host=u.expo.dev)
 
-android:
+-android:
 
-![Android](https://qr.expo.dev/eas-update?updateId=c5120d45-619b-4d77-845f-fd1241e73996&appScheme=exp&host=u.expo.dev)
+![Android](https://qr.expo.dev/eas-update?updateId=c7363bc2-dba3-4fc7-a156-803053a92c6c&appScheme=exp&host=u.expo.dev)

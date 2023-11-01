@@ -3,7 +3,7 @@ import { Clock } from '../Clock';
 import { VSpacer } from '../../designSystem/layout/VSpacer';
 import { useRef } from 'react';
 
-export const GameView = ({ win, lose }) => {
+export const GameScreen = ({ win, lose }) => {
   const clock = useRef(null);
 
   return (

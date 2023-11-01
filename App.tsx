@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { GameView } from './src/components/screens/GameView';
-import { ResultView } from './src/components/screens/ResultView';
-import { IntroView } from './src/components/screens/IntroView';
+import { GameScreen } from './src/components/screens/GameScreen';
+import { ResultScreen, ResultObj } from './src/components/screens/ResultScreen';
+import { IntroScreen } from './src/components/screens/IntroScreen';
 import { AppContainer } from './src/designSystem/layout/AppContainer';
 
 export default function App() {
@@ -14,14 +14,16 @@ export default function App() {
   };
 
   const win = (score: number) => {
-    scores.push(score);
+    const scoreObj = { win: true, score: score };
+    scores.push(scoreObj);
     setScores(scores);
     setGameStarted(false);
     setGameWon(true);
   };
 
   const lose = (score: number) => {
-    scores.push(score);
+    const scoreObj = { win: false, score: score };
+    scores.push(scoreObj);
     setScores(scores);
     setGameStarted(false);
     setGameWon(false);
@@ -30,12 +32,16 @@ export default function App() {
   return (
     <AppContainer>
       {!gameStarted ? (
-        <IntroView start={start} />
+        <IntroScreen start={start} />
       ) : (
-        <GameView win={win} lose={lose} />
+        <GameScreen win={win} lose={lose} />
       )}
       {gameWon !== null && !gameStarted && (
-        <ResultView gameWon={gameWon} scores={scores} />
+        <ResultScreen
+          gameWon={gameWon}
+          score={scores[0].score}
+          scores={scores as [ResultObj]}
+        />
       )}
     </AppContainer>
   );
