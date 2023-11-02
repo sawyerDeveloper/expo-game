@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native';
 import { Label } from '../../designSystem/ui/Label';
 import { VSpacer } from '../../designSystem/layout/VSpacer';
+import { LastResults } from './resultScreen/LastResults';
 
 export type ResultObj = {
   score: number;
@@ -8,41 +8,20 @@ export type ResultObj = {
 };
 
 type ResultScreenProps = {
-  gameWon: Boolean;
-  score: number;
+  result: ResultObj;
   scores: [ResultObj];
 };
 
-export const ResultScreen = ({ gameWon, score, scores }: ResultScreenProps) => {
+export const ResultScreen = ({ result, scores }: ResultScreenProps) => {
+  const { win, score } = result;
   return (
     <>
       <VSpacer height={20} />
-      <Text style={styles.label}>You {gameWon ? 'Won!' : 'Lost!'}</Text>
+      <Label color='#fb9' text={win ? 'You Won!' : 'You Lost!'} />
       <VSpacer height={10} />
-      <Text style={styles.label}>Your score was: {score}</Text>
+      <Label color='#fb9' text={'Your score was: ' + score} />
       <VSpacer height={10} />
-      {scores && <Label text={'Last games'} />}
-      <View style={styles.scoreContainer}>
-        {scores &&
-          scores.slice(1).map((scoreObj) => {
-            return (
-              <Label
-                color={scoreObj.win ? 'green' : 'red'}
-                key={scoreObj.score + Math.random()}
-                text={scoreObj.score}
-              />
-            );
-          })}
-      </View>
+      {scores.length > 1 && <LastResults results={scores.reverse()} />}
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  label: {
-    color: '#fb9',
-  },
-  scoreContainer: {
-    alignItems: 'center',
-  },
-});
