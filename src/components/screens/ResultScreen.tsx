@@ -1,6 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native';
 import { Label } from '../../designSystem/ui/Label';
 import { VSpacer } from '../../designSystem/layout/VSpacer';
+import { LastResults } from './resultScreen/LastResults';
+import { Modal, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { useState } from 'react';
+import { Button } from '../../designSystem/ui/Button';
 
 export type ResultObj = {
   score: number;
@@ -8,41 +11,49 @@ export type ResultObj = {
 };
 
 type ResultScreenProps = {
-  gameWon: Boolean;
-  score: number;
+  result: ResultObj;
   scores: [ResultObj];
 };
 
-export const ResultScreen = ({ gameWon, score, scores }: ResultScreenProps) => {
+export const ResultScreen = ({ result, scores }: ResultScreenProps) => {
+  const { height } = useWindowDimensions();
+  const { win, score } = result;
+  const [modalVisible, setModalVisible] = useState(true);
   return (
-    <>
-      <VSpacer height={20} />
-      <Text style={styles.label}>You {gameWon ? 'Won!' : 'Lost!'}</Text>
+    <View style={styles.container}>
+      <Modal
+        presentationStyle='overFullScreen'
+        animationType='slide'
+        transparent={true}
+        visible={modalVisible}
+      >
+        <View style={[styles.modal, { marginTop: height / 2 - 80 }]}>
+          <VSpacer height={20} />
+          <Label color='#fb9' text={win ? 'You Won!' : 'You Lost!'} />
+          <VSpacer height={10} />
+          <Label color='#fb9' text={'Your score was: ' + score} />
+          <Button title='OK' onPress={() => setModalVisible(false)} />
+        </View>
+      </Modal>
       <VSpacer height={10} />
-      <Text style={styles.label}>Your score was: {score}</Text>
-      <VSpacer height={10} />
-      {scores && <Label text={'Last games'} />}
-      <View style={styles.scoreContainer}>
-        {scores &&
-          scores.slice(1).map((scoreObj) => {
-            return (
-              <Label
-                color={scoreObj.win ? 'green' : 'red'}
-                key={scoreObj.score + Math.random()}
-                text={scoreObj.score}
-              />
-            );
-          })}
-      </View>
-    </>
+      {scores && <LastResults results={scores.reverse()} />}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  label: {
-    color: '#fb9',
-  },
-  scoreContainer: {
+  container: {
+    justifyContent: 'center',
     alignItems: 'center',
+  },
+  modal: {
+    width: 300,
+    margin: 40,
+    backgroundColor: '#aaa',
+    borderRadius: 25,
+    padding: 50,
+    alignItems: 'center',
+    alignSelf: 'center',
+    alignContent: 'center',
   },
 });
