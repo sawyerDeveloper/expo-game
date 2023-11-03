@@ -4,14 +4,14 @@ import { Label } from '../../../designSystem/ui/Label';
 export const LastResults = ({ results }) => {
   return (
     <>
-      <Label color='#fb9' text={'Previous games'} />
+      <Label color='#fb9' text='Previous games' />
       <View style={styles.container}>
-        {results.map((scoreObj) => {
+        {results.map((resultObj) => {
           return (
             <Label
-              color={scoreObj.win ? 'green' : 'red'}
-              text={scoreObj.score}
-              key={scoreObj.score + Math.random()}
+              color={resultObj.win ? 'green' : 'red'}
+              text={resultObj.score}
+              key={resultObj.score + Math.random()}
             />
           );
         })}

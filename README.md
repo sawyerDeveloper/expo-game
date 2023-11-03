@@ -9,8 +9,8 @@ Latest on Dev:
 
 -ios:
 
-![ios](https://qr.expo.dev/eas-update?updateId=c8be96f2-df23-4fc6-80cf-94cbf760efe0&appScheme=exp&host=u.expo.dev)
+![ios](https://qr.expo.dev/eas-update?updateId=64025d7a-d5f6-4fd9-853e-3040ae6c0039&appScheme=exp&host=u.expo.dev)
 
 -android:
 
-![Android](https://qr.expo.dev/eas-update?updateId=c7363bc2-dba3-4fc7-a156-803053a92c6c&appScheme=exp&host=u.expo.dev)
+![Android](https://qr.expo.dev/eas-update?updateId=dfb965c3-6f65-4614-8038-9f75f849ce0c&appScheme=exp&host=u.expo.dev)

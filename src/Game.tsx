@@ -13,11 +13,11 @@ export const Game = () => {
   };
 
   const win = (score: number) => {
-      const resultObj: ResultObj = { win: true, score: score };
-      scores.push(resultObj);
-      setScores(scores);
-      setGameStarted(false);
-      setGameWon(true);
+    const resultObj: ResultObj = { win: true, score: score };
+    scores.push(resultObj);
+    setScores(scores);
+    setGameStarted(false);
+    setGameWon(true);
   };
 
   const lose = (score: number) => {
