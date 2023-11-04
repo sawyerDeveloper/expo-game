@@ -5,44 +5,39 @@ import { parseData } from '../utils/ParseSpriteSheetData';
 import { useEffect, useState } from 'react';
 
 export const SpriteSheet = ({ image, data, fps }) => {
+  
   const [currentFrame, setCurrentFrame] = useState(0);
+
   const [images, setImages] = useState([]);
-  const [frameRate] = useState(fps);
-  const tempImages = data.map((imageData) => {
-    const extractImage = async (newData) => {
-      const manipResult = await manipulateAsync(
-        image,
-        [
-          {
-            crop: {
-              originX: newData.frame.x,
-              originY: newData.frame.y,
-              width: newData.frame.w,
-              height: newData.frame.h,
-            },
-          },
-        ],
-        { base64: true }
-      );
-      return manipResult;
-    };
-    extractImage(imageData);
-  });
 
   const setFrame = () => {
     let newFrame = currentFrame + 1;
-    if (currentFrame >= images.length) {
+    if (currentFrame >= data.length) {
       newFrame = 0;
     }
     setCurrentFrame(newFrame);
   };
 
+
   useEffect(() => {
-    const interval = setInterval(setFrame, 1000);
-    return () => clearInterval(interval);
+    (async () => {
+      const newImages = data.map((imageData) => {
+        parseData(image, imageData).then(boo => {
+          console.log(boo)
+          return boo.uri
+        })
+      })
+      const images = await parseData(image, data[0])
+      setImages([images]);
+    })();
   }, []);
 
-  return (
-    <Image style={{ width: 100, height: 100 }} source={images[currentFrame]} />
-  );
+  useEffect(() => {
+    const interval = setTimeout(setFrame, 1000);
+    return () => clearTimeout(interval);
+  }, [setFrame]);
+  
+  const source = images[currentFrame];
+  console.log(source);
+  return <Image style={{ width: 100, height: 100 }} source={source} />;
 };
