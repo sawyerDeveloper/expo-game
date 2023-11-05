@@ -60,7 +60,7 @@ export const SpriteSheet = ({ image, data, fps }) => {
   }, []);
 
   useEffect(() => {
-    const interval = setTimeout(setFrame, 133);
+    const interval = setTimeout(setFrame, 33);
     return () => clearTimeout(interval);
   }, [setFrame]);
   

@@ -1,4 +1,4 @@
-import { manipulateAsync } from 'expo-image-manipulator';
+import { SaveFormat, manipulateAsync } from 'expo-image-manipulator';
 export const parseData = async (image, imageData) => {
   const newImage =  await manipulateAsync(
     image.uri,
@@ -12,7 +12,7 @@ export const parseData = async (image, imageData) => {
         },
       },
     ],
-    { base64: true }
+    { base64: true, format: SaveFormat.PNG }
   );
   return newImage
 };
