@@ -20,51 +20,20 @@ export const SpriteSheet = ({ image, data, fps }) => {
 
   useEffect(() => {
     (async () => {
-
       const newImage = Asset.fromModule(require('../../../assets/sprites/flames/flames.png'));
       await newImage.downloadAsync();
       let imgs = []
-      //  Ugly, but temporary until i can figure out how to loop though async functions
-      imgs.push(await parseData(newImage, data[0]))
-      imgs.push(await parseData(newImage, data[1]))
-      imgs.push(await parseData(newImage, data[2]))
-      imgs.push(await parseData(newImage, data[3]))
-      imgs.push(await parseData(newImage, data[4]))
-      imgs.push(await parseData(newImage, data[5]))
-      imgs.push(await parseData(newImage, data[6]))
-      imgs.push(await parseData(newImage, data[7]))
-      imgs.push(await parseData(newImage, data[8]))
-      imgs.push(await parseData(newImage, data[9]))
-      imgs.push(await parseData(newImage, data[10]))
-      imgs.push(await parseData(newImage, data[11]))
-      imgs.push(await parseData(newImage, data[12]))
-      imgs.push(await parseData(newImage, data[13]))
-      imgs.push(await parseData(newImage, data[14]))
-      imgs.push(await parseData(newImage, data[15]))
-      imgs.push(await parseData(newImage, data[16]))
-      imgs.push(await parseData(newImage, data[17]))
-      imgs.push(await parseData(newImage, data[18]))
-      imgs.push(await parseData(newImage, data[19]))
-      imgs.push(await parseData(newImage, data[20]))
-      imgs.push(await parseData(newImage, data[21]))
-      imgs.push(await parseData(newImage, data[22]))
-      imgs.push(await parseData(newImage, data[23]))
-      imgs.push(await parseData(newImage, data[24]))
-      imgs.push(await parseData(newImage, data[25]))
-      imgs.push(await parseData(newImage, data[26]))
-      imgs.push(await parseData(newImage, data[27]))
-      imgs.push(await parseData(newImage, data[28]))
-      imgs.push(await parseData(newImage, data[29]))
-      setImages(imgs);
+      for(var i = 0 ; i < data.length - 1 ; i++){
+        imgs.push(await parseData(newImage, data[i]))
+      }
+      setImages(imgs)
     })();
   }, []);
 
   useEffect(() => {
-    const interval = setTimeout(setFrame, 33);
+    const interval = setTimeout(setFrame, 60);
     return () => clearTimeout(interval);
   }, [setFrame]);
   
-  const source = images[currentFrame];
-  //console.log(source)
-  return <Image style={{ width: 50, height: 50 }} source={source} />;
+  return <Image style={{ width: 50, height: 50 }} source={images[currentFrame]} />;
 };
