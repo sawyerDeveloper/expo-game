@@ -3,7 +3,7 @@ import { Clock } from '../Clock';
 import { VSpacer } from '../../designSystem/layout/VSpacer';
 import { useRef } from 'react';
 import { SpriteSheet } from '../../designSystem/ui/SpriteSheet';
-import {frames} from '../../../assets/sprites/flames/flames.json'
+import flames from '../../../assets/sprites/flames/flames.json'
 export const GameScreen = ({ win, lose }) => {
   const clock = useRef(null);
 
@@ -17,7 +17,7 @@ export const GameScreen = ({ win, lose }) => {
       <SpriteSheet
         fps={30}
         image={''}
-        data={frames}
+        data={flames.frames}
       />
     </>
   );
