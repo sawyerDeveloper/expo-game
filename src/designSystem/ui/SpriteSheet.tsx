@@ -35,5 +35,5 @@ export const SpriteSheet = ({ image, data, fps }) => {
     return () => clearTimeout(interval);
   }, [setFrame]);
   
-  return <Image style={{ width: 50, height: 50 }} source={images[currentFrame]} />;
+  return <Image style={{ width: 43, height: 73 }} source={images[currentFrame]} />;
 };
