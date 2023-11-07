@@ -4,36 +4,44 @@ import { parseData } from '../utils/ParseSpriteSheetData';
 import { useEffect, useState } from 'react';
 
 export const SpriteSheet = ({ image, data, fps }) => {
-  
+  const { frames } = data;
   const [currentFrame, setCurrentFrame] = useState(0);
-
   const [images, setImages] = useState([]);
+  const frameRate = Math.floor(1000 / fps);
+  const dimensions = {
+    width: frames[0].sourceSize.w,
+    height: frames[0].sourceSize.h,
+  };
 
   const setFrame = () => {
     let newFrame = currentFrame + 1;
-    if (currentFrame >= data.length - 1) {
+    if (currentFrame >= frames.length - 1) {
       newFrame = 0;
     }
     setCurrentFrame(newFrame);
   };
 
-
   useEffect(() => {
     (async () => {
-      const newImage = Asset.fromModule(require('../../../assets/sprites/flames/flames.png'));
-      await newImage.downloadAsync();
-      let imgs = []
-      for(var i = 0 ; i < data.length - 1 ; i++){
-        imgs.push(await parseData(newImage, data[i]))
+      const spriteSheetImage = Asset.fromModule(image);
+      await spriteSheetImage.downloadAsync();
+      let imgs = [];
+      for (var i = 0; i < frames.length - 1; i++) {
+        imgs.push(await parseData(spriteSheetImage, frames[i]));
       }
-      setImages(imgs)
+      setImages(imgs);
     })();
   }, []);
 
   useEffect(() => {
-    const interval = setTimeout(setFrame, 60);
+    const interval = setTimeout(setFrame, frameRate);
     return () => clearTimeout(interval);
-  }, [setFrame]);
-  
-  return <Image style={{ width: 43, height: 65 }} source={images[currentFrame]} />;
+  }, [setFrame, frameRate]);
+
+  return (
+    <Image
+      style={{ width: dimensions.width, height: dimensions.height }}
+      source={images[currentFrame]}
+    />
+  );
 };
