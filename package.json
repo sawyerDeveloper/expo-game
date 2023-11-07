@@ -10,7 +10,7 @@
     "deploy": "gh-pages -d web-build",
     "predeploy": "expo export:web"
   },
-  "homepage": "http://sawyerdeveloper.github.io/expo-game",
+  "homepage": "http://sawyerdeveloper.github.io/expo-game/web-build/",
   "dependencies": {
     "@expo/webpack-config": "^19.0.0",
     "@types/react": "~18.2.14",
