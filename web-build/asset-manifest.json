@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/expo-game/static/js/main.de48be92.js",
+    "static/js/488.9dce5492.js": "/expo-game/static/js/488.9dce5492.js",
+    "static/media/flames.png": "/expo-game/static/media/flames.712283e1e5b2eca95aea.png",
+    "favicon.ico": "/expo-game/favicon.ico",
+    "index.html": "/expo-game/index.html",
+    "favicon-32.png": "/expo-game/favicon-32.png",
+    "manifest.json": "/expo-game/manifest.json",
+    "favicon-16.png": "/expo-game/favicon-16.png",
+    "serve.json": "/expo-game/serve.json",
+    "main.de48be92.js.map": "/expo-game/static/js/main.de48be92.js.map",
+    "488.9dce5492.js.map": "/expo-game/static/js/488.9dce5492.js.map"
+  },
+  "entrypoints": [
+    "static/js/488.9dce5492.js",
+    "static/js/main.de48be92.js"
+  ]
+}
