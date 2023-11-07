@@ -1,0 +1,1 @@
+export const flamesSheet = require('../flames/flames.png')
