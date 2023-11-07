@@ -2,13 +2,11 @@
 
 A game built with EXPO SDK and EAS.
 
-It is starting as the shell and then each game pattern or mechanic gets added one at a time as the game unfolds.
+I am starting the shell and then each game pattern or mechanic gets added one at a time as the game unfolds.
 
--Created a Custom Spritesheet Load, Parser and Renderer with epo modules that runs at 60fps.
+Created a Custom Spritesheet Loader, Parser and Renderer with epo modules that runs at 60fps.
 
-Scanning requires Expo Go app.
-
-Latest on Dev:
+* Latest on Dev (Scanning requires Expo Go app ) :
 
 -ios:
 
