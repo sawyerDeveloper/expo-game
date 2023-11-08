@@ -7,6 +7,7 @@ I am starting the shell and then each game pattern or mechanic gets added one at
 # New Features
 
 - Created a Custom Spritesheet Loader, Parser and Renderer with expo modules that runs at 60fps.
+- New Web build with parallel features.
 
 # Latest on Dev (Scanning requires Expo Go app ) :
 
