@@ -6,7 +6,7 @@ export const IntroScreen = ({ start }) => {
   return (
     <>
       <Label color='#fb9' text='This is going to be a fun game!' />
-      <Label color='#fff' text='Press Start' size={18} />
+      <Label color='#fff' text='Press Start Button' size={18} />
       <VSpacer height={50} />
       <Button title='Start' onPress={start} />
     </>
