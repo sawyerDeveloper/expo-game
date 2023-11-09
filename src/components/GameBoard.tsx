@@ -8,16 +8,15 @@ import {
 import { Label } from '../designSystem/ui/Label';
 
 //  Value that reflects the number of grid elements
-export const GRID_SIZE: GridDimensions = { width: 18, height: 32 };
+export const GRID_SIZE: GridDimensions = { width: 9, height: 16 };
 export const GameBoard = () => {
   const { width, height } = useWindowDimensions();
   const gridData = useRef<Array<GridElement>>(
     createGridData(width, height, GRID_SIZE)
   );
-  const board = useRef(null);
   return (
     <View style={styles.container}>
-      <View ref={board} style={styles.board}>
+      <View style={styles.board}>
         {gridData.current.map((element) => {
           return (
             <View
