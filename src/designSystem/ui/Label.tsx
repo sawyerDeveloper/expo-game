@@ -7,9 +7,5 @@ type LabelProps = {
 };
 
 export const Label = ({ text, color, size }: LabelProps) => {
-  return (
-    <>
-      <Text style={{ color: color, fontSize: size }}>{text}</Text>
-    </>
-  );
+  return <Text selectable={false} style={{ color: color, fontSize: size}}>{text}</Text>
 };

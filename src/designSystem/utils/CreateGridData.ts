@@ -12,8 +12,8 @@ export type GridDimensions = {
 };
 
 export const createGridData = (width, height, gridDimensions) : Array<GridElement> => {
-  const elementWidth = width / gridDimensions.width//Math.floor(width / gridDimensions.width);
-  const elementHeight = height / gridDimensions.height//Math.floor(height / gridDimensions.height);
+  const elementWidth = width / gridDimensions.width
+  const elementHeight = height / gridDimensions.height
   const grid = [];
   let id = 0;
   for (var i = 0; i < gridDimensions.width; i++) {

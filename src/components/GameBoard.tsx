@@ -8,7 +8,7 @@ import {
 import { Label } from '../designSystem/ui/Label';
 
 //  Value that reflects the number of grid elements
-export const GRID_SIZE: GridDimensions = { width: 24, height: 18 };
+export const GRID_SIZE: GridDimensions = { width: 18, height: 32 };
 export const GameBoard = () => {
   const { width, height } = useWindowDimensions();
   const gridData = useRef<Array<GridElement>>(
@@ -34,7 +34,7 @@ export const GameBoard = () => {
                 borderWidth: .5
               }}
             >
-              <Label color='#fff' text={element.id} />
+              <Label color='#fff' size={8} text={element.id} />
             </View>
           );
         })}
@@ -46,7 +46,6 @@ export const GameBoard = () => {
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'center',
-    backgroundColor: 'red',
     width: '100%',
     height: '100%',
     position: 'absolute',
