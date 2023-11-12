@@ -5,13 +5,23 @@ type ButtonProps = {
   title: string;
   onPress: () => void;
   titleColor?: ColorValue;
+  fontFamily?: string;
 };
 
-export const Button = ({ title, onPress, titleColor }: ButtonProps) => {
+export const Button = ({
+  title,
+  onPress,
+  titleColor,
+  fontFamily,
+}: ButtonProps) => {
   return (
     <Pressable onPress={onPress}>
       <View style={styles.container}>
-        <Label text={title} color={titleColor ? titleColor : '#b2b'} />
+        <Label
+          fontFamily={fontFamily}
+          text={title}
+          color={titleColor ? titleColor : '#b2b'}
+        />
       </View>
     </Pressable>
   );
@@ -24,6 +34,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#bbb',
-    borderRadius: 10
+    borderRadius: 10,
   },
 });
