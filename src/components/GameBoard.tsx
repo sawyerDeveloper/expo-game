@@ -5,7 +5,7 @@ import {
   GridElement,
   createGridData,
 } from '../designSystem/utils/CreateGridData';
-import { Label } from '../designSystem/ui/Label';
+import { Clock } from './Clock';
 
 //  Value that reflects the number of grid elements
 export const GRID_SIZE: GridDimensions = { width: 9, height: 16 };
@@ -33,7 +33,7 @@ export const GameBoard = () => {
                 borderWidth: .5
               }}
             >
-              <Label color='#fff' size={8} text={element.id} />
+              <Clock />
             </View>
           );
         })}
