@@ -4,11 +4,12 @@ import { Label } from '../../../designSystem/ui/Label';
 export const LastResults = ({ results }) => {
   return (
     <>
-      <Label color='#fb9' text='Previous games' />
+      <Label color='#fb9' fontFamily='neuroBoldItalic' text='Previous games' />
       <View style={styles.container}>
         {results.map((resultObj) => {
           return (
             <Label
+              fontFamily='neuro'
               color={resultObj.win ? 'green' : 'red'}
               text={resultObj.score}
               key={resultObj.score + Math.random()}

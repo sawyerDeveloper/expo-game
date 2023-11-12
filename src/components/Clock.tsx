@@ -7,7 +7,6 @@ import {
   useRef,
   useState,
 } from 'react';
-import { useAnimationFrame } from '../hooks/useAnimationFrame';
 
 const CLOCK_TIME: number = 1000;
 
@@ -30,7 +29,7 @@ export const Clock = forwardRef((_props, ref) => {
 
   return (
     <View style={styles.container}>
-      <Label color='#fff' size={26} text={currentTime} />
+      <Label fontFamily='neuro' color='#fff' size={26} text={currentTime} />
     </View>
   );
 });
