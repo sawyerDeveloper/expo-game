@@ -1,19 +1,26 @@
 import { StyleSheet, View } from 'react-native';
 import { Label } from '../designSystem/ui/Label';
-import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
+import { useAnimationFrame } from '../hooks/useAnimationFrame';
 
 const CLOCK_TIME: number = 1000;
 
 export const Clock = forwardRef((_props, ref) => {
   const [currentTime, setCurrentTime] = useState(0);
-  const [startTime] = useState(Date.now());
+  const startTime = useRef(Date.now());
 
   useImperativeHandle(ref, () => ({
     currentTime,
   }));
 
   const setTime = () => {
-    setCurrentTime(Math.floor((Date.now() - startTime) / 1000));
+    setCurrentTime(Math.floor((Date.now() - startTime.current) / 1000));
   };
 
   useEffect(() => {
