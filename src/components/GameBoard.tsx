@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useRef } from 'react';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import {
   GridDimensions,
@@ -6,6 +6,7 @@ import {
   createGridData,
 } from '../designSystem/utils/CreateGridData';
 import { Clock } from './Clock';
+import { Label } from '../designSystem/ui/Label';
 
 //  Value that reflects the number of grid elements
 export const GRID_SIZE: GridDimensions = { width: 9, height: 16 };
@@ -31,10 +32,10 @@ export const GameBoard = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 borderColor: '#ffc',
-                borderWidth: .5
+                borderWidth: 0.5,
               }}
             >
-              <Clock />
+              <Label text={element.id} color='#fff' fontFamily='neuroBold' />
             </View>
           );
         })}

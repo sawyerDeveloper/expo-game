@@ -11,7 +11,7 @@ import {
 import { GameLoopContext } from '../designSystem/context/gameLoop/GameLoopContext';
 
 const CLOCK_TIME: number = 1000;
-
+const FPS = 1;
 export const Clock = forwardRef((_props, ref) => {
   const [currentTime, setCurrentTime] = useState(0);
   const startTime = useRef(Date.now());
@@ -21,20 +21,19 @@ export const Clock = forwardRef((_props, ref) => {
     currentTime,
   }));
 
-  const setTime = () => {
-    if (
-      Math.floor((Date.now() - startTime.current) / CLOCK_TIME) > currentTime
-    ) {
+  const setTime = (tick) => {
+    //TODO convert fps to exact frame to act upon out of 60
+    if (tick == FPS) {
       setCurrentTime(Math.floor((Date.now() - startTime.current) / CLOCK_TIME));
     }
   };
 
   useEffect(() => {
     if (!animationID) {
-      setAnimationID(gameLoop.update(setTime));
+      setAnimationID(gameLoop.subscribe(setTime));
     }
     return () => gameLoop.cleanup(animationID);
-  }, [startTime]);
+  }, []);
 
   return (
     <View style={styles.container}>

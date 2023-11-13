@@ -1,38 +1,50 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { GameLoopContext } from './GameLoopContext';
 
 const MAX_FPS = 60;
+
 export const GameLoopContextProvider = ({ children }) => {
-  let prevTick = 0;
+  let previousTimeTick = 0;
   let callbacks = [];
-  const update = (callback) : number => {
-    console.log('update in provider', callback);
-    const id = Date.now()
-    const obj = {id: id, callback: callback}
+  const currentFpsTick = useRef(0);
+
+  const subscribe = (callback): number => {
+    const id = Date.now();
+    const obj = { id: id, callback: callback };
     callbacks.push(obj);
-    return id
+    return id;
   };
-  const callUpdates = () => {
-    requestAnimationFrame(callUpdates);
+
+  const update = () => {
+    requestAnimationFrame(update);
     let now = Math.round((MAX_FPS * Date.now()) / 1000);
-    if (now == prevTick) return;
-    prevTick = now;
-    for (var i = 0; i < callbacks.length - 1; i++) {
-      callbacks[i].callback();
+    if (now == previousTimeTick) return;
+    previousTimeTick = now;
+    currentFpsTick.current++;
+
+    for (var i = 0; i < callbacks.length; i++) {
+      callbacks[i].callback(currentFpsTick.current);
+    }
+
+    if (currentFpsTick.current == 60) {
+      currentFpsTick.current = 0;
     }
   };
 
   const cleanup = (id) => {
-    callbacks.splice(callbacks.findIndex(callback => callback.id === id), 1)
-  }
+    callbacks.splice(
+      callbacks.findIndex((callback) => callback.id === id),
+      1
+    );
+  };
 
   useEffect(() => {
-    const req = requestAnimationFrame(callUpdates);
+    const req = requestAnimationFrame(update);
     return () => cancelAnimationFrame(req);
-  }, [callUpdates]);
+  }, [update]);
 
   return (
-    <GameLoopContext.Provider value={{ update, cleanup }}>
+    <GameLoopContext.Provider value={{ subscribe, cleanup }}>
       {children}
     </GameLoopContext.Provider>
   );
