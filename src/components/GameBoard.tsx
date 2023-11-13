@@ -5,7 +5,6 @@ import {
   GridElement,
   createGridData,
 } from '../designSystem/utils/CreateGridData';
-import { Clock } from './Clock';
 import { Label } from '../designSystem/ui/Label';
 
 //  Value that reflects the number of grid elements
@@ -13,7 +12,7 @@ export const GRID_SIZE: GridDimensions = { width: 9, height: 16 };
 export const GameBoard = () => {
   const { width, height } = useWindowDimensions();
   const gridData = useRef<Array<GridElement>>(
-    createGridData(width, height, GRID_SIZE)
+    createGridData(width, height - 78, GRID_SIZE)
   );
 
   return (

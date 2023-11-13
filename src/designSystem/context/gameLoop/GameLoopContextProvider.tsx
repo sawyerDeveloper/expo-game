@@ -4,9 +4,9 @@ import { GameLoopContext } from './GameLoopContext';
 const MAX_FPS = 60;
 
 export const GameLoopContextProvider = ({ children }) => {
-  let previousTimeTick = 0;
-  let callbacks = [];
+  const previousTimeTick = useRef(0);
   const currentFpsTick = useRef(0);
+  let callbacks = [];
 
   const subscribe = (callback): number => {
     const id = Date.now();
@@ -18,8 +18,8 @@ export const GameLoopContextProvider = ({ children }) => {
   const update = () => {
     requestAnimationFrame(update);
     let now = Math.round((MAX_FPS * Date.now()) / 1000);
-    if (now == previousTimeTick) return;
-    previousTimeTick = now;
+    if (now == previousTimeTick.current) return;
+    previousTimeTick.current = now;
     currentFpsTick.current++;
 
     for (var i = 0; i < callbacks.length; i++) {
