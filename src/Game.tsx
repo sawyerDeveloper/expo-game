@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { GameScreen } from './components/screens/GameScreen';
 import { IntroScreen } from './components/screens/IntroScreen';
 import { ResultObj, ResultScreen } from './components/screens/ResultScreen';
-
 export const Game = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameWon, setGameWon] = useState(null);

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import {
   GridDimensions,
@@ -14,6 +14,7 @@ export const GameBoard = () => {
   const gridData = useRef<Array<GridElement>>(
     createGridData(width, height, GRID_SIZE)
   );
+
   return (
     <View style={styles.container}>
       <View style={styles.board}>

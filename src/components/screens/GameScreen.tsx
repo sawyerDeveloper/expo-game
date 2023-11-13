@@ -6,11 +6,12 @@ import { SpriteSheet } from '../../designSystem/ui/SpriteSheet';
 import flamesData from '../../designSystem/assets/sprites/flames/flames.json';
 import { flamesSheet } from '../../designSystem/assets/sprites/flames';
 import { GameBoard } from '../GameBoard';
+import { GameLoopContextProvider } from '../../designSystem/context/gameLoop/GameLoopContextProvider';
 export const GameScreen = ({ win, lose }) => {
   const clock = useRef(null);
 
   return (
-    <>
+    <GameLoopContextProvider>
       <GameBoard />
       <Button
         title='Win'
@@ -26,6 +27,6 @@ export const GameScreen = ({ win, lose }) => {
       <VSpacer height={10} />
       <Clock ref={clock} />
       <SpriteSheet fps={30} data={flamesData} image={flamesSheet} />
-    </>
+    </GameLoopContextProvider>
   );
 };

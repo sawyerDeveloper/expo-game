@@ -2,30 +2,38 @@ import { StyleSheet, View } from 'react-native';
 import { Label } from '../designSystem/ui/Label';
 import {
   forwardRef,
+  useContext,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
 } from 'react';
+import { GameLoopContext } from '../designSystem/context/gameLoop/GameLoopContext';
 
 const CLOCK_TIME: number = 1000;
 
 export const Clock = forwardRef((_props, ref) => {
   const [currentTime, setCurrentTime] = useState(0);
-  const startTime = useRef(Date.now());
-
+  const startTime = useRef(null);
+  const gameLoop = useContext(GameLoopContext)
   useImperativeHandle(ref, () => ({
     currentTime,
   }));
-
+  
   const setTime = () => {
-    setCurrentTime(Math.floor((Date.now() - startTime.current) / 1000));
+    if(Math.floor((Date.now() - startTime.current) / CLOCK_TIME) > currentTime){
+      setCurrentTime(Math.floor((Date.now() - startTime.current) / CLOCK_TIME));
+    }
   };
 
   useEffect(() => {
-    const interval = setInterval(setTime, CLOCK_TIME);
-    return () => clearInterval(interval);
-  }, []);
+    if(startTime.current === null){
+      startTime.current = Date.now();
+      gameLoop.update(setTime)
+    }
+    
+  }, [startTime]);
+  
 
   return (
     <View style={styles.container}>
