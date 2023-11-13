@@ -1,7 +1,7 @@
 import { SaveFormat, manipulateAsync } from 'expo-image-manipulator';
 export const parseData = async (image, imageData) => {
   const newImage =  await manipulateAsync(
-    image.uri,
+    image.localUri,
     [
       {
         crop: {
