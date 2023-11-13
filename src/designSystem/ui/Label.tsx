@@ -4,12 +4,16 @@ type LabelProps = {
   text: string | number;
   color?: ColorValue;
   size?: number;
+  fontFamily?: string;
 };
 
-export const Label = ({ text, color, size }: LabelProps) => {
+export const Label = ({ text, color, size, fontFamily }: LabelProps) => {
   return (
-    <>
-      <Text style={{ color: color, fontSize: size }}>{text}</Text>
-    </>
+    <Text
+      selectable={false}
+      style={{ color: color, fontSize: size, fontFamily: fontFamily }}
+    >
+      {text}
+    </Text>
   );
 };

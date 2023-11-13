@@ -1,29 +1,43 @@
 import { StyleSheet, View } from 'react-native';
 import { Label } from '../designSystem/ui/Label';
-import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+import {
+  forwardRef,
+  useContext,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
+import { GameLoopContext } from '../designSystem/context/gameLoop/GameLoopContext';
 
 const CLOCK_TIME: number = 1000;
-
+const FPS = 1;
 export const Clock = forwardRef((_props, ref) => {
   const [currentTime, setCurrentTime] = useState(0);
-  const [startTime] = useState(Date.now());
-
+  const startTime = useRef(Date.now());
+  const [animationID, setAnimationID] = useState(null);
+  const gameLoop = useContext(GameLoopContext);
   useImperativeHandle(ref, () => ({
     currentTime,
   }));
 
-  const setTime = () => {
-    setCurrentTime(Math.floor((Date.now() - startTime) / 1000));
+  const setTime = (tick) => {
+    //TODO convert fps to exact frame to act upon out of 60
+    if (tick == FPS) {
+      setCurrentTime(Math.floor((Date.now() - startTime.current) / CLOCK_TIME));
+    }
   };
 
   useEffect(() => {
-    const interval = setInterval(setTime, CLOCK_TIME);
-    return () => clearInterval(interval);
+    if (!animationID) {
+      setAnimationID(gameLoop.subscribe(setTime));
+    }
+    return () => gameLoop.cleanup(animationID);
   }, []);
 
   return (
     <View style={styles.container}>
-      <Label color='#fff' size={26} text={currentTime} />
+      <Label fontFamily='neuro' color='#fff' size={26} text={currentTime} />
     </View>
   );
 });

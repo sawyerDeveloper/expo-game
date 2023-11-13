@@ -1,7 +1,8 @@
 import { Image } from 'expo-image';
 import { Asset } from 'expo-asset';
 import { parseData } from '../utils/ParseSpriteSheetData';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { GameLoopContext } from '../context/gameLoop/GameLoopContext';
 
 export const SpriteSheet = ({ image, data, fps }) => {
   const { frames } = data;
@@ -12,12 +13,12 @@ export const SpriteSheet = ({ image, data, fps }) => {
     width: frames[0].sourceSize.w,
     height: frames[0].sourceSize.h,
   };
+  const [animationID, setAnimationID] = useState(null);
+  const gameLoop = useContext(GameLoopContext);
 
-  const setFrame = () => {
-    let newFrame = currentFrame + 1;
-    if (currentFrame >= frames.length - 1) {
-      newFrame = 0;
-    }
+  const setFrame = (tick) => {
+    const newFrame = (tick - 1) / 2;
+    if (!Number.isInteger(newFrame)) return;
     setCurrentFrame(newFrame);
   };
 
@@ -34,9 +35,11 @@ export const SpriteSheet = ({ image, data, fps }) => {
   }, []);
 
   useEffect(() => {
-    const interval = setTimeout(setFrame, frameRate);
-    return () => clearTimeout(interval);
-  }, [setFrame, frameRate]);
+    if (!animationID) {
+      setAnimationID(gameLoop.subscribe(setFrame));
+    }
+    return () => gameLoop.cleanup(animationID);
+  }, []);
 
   return (
     <Image

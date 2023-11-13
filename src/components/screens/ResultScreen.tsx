@@ -17,7 +17,7 @@ type ResultScreenProps = {
 
 export const ResultScreen = ({ result, scores }: ResultScreenProps) => {
   const { height } = useWindowDimensions();
-  const { win, score } = result;
+  const { win } = result;
   const [modalVisible, setModalVisible] = useState(true);
   return (
     <View style={styles.container}>
@@ -29,10 +29,22 @@ export const ResultScreen = ({ result, scores }: ResultScreenProps) => {
       >
         <View style={[styles.modal, { marginTop: height / 2 - 80 }]}>
           <VSpacer height={20} />
-          <Label color='#fb9' text={win ? 'You Won!' : 'You Lost!'} />
+          <Label
+            color='#fb9'
+            fontFamily='neuroBold'
+            text={win ? 'You Won!' : 'You Lost!'}
+          />
           <VSpacer height={10} />
-          <Label color='#fb9' text={'Your score was: ' + score} />
-          <Button title='OK' onPress={() => setModalVisible(false)} />
+          <Label
+            color='#fb9'
+            fontFamily='neuroBold'
+            text={'Your score was: ' + scores.reverse()[0].score}
+          />
+          <Button
+            title='OK'
+            fontFamily='neuroBold'
+            onPress={() => setModalVisible(false)}
+          />
         </View>
       </Modal>
       <VSpacer height={10} />
