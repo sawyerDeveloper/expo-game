@@ -14,26 +14,27 @@ const CLOCK_TIME: number = 1000;
 
 export const Clock = forwardRef((_props, ref) => {
   const [currentTime, setCurrentTime] = useState(0);
-  const startTime = useRef(null);
-  const gameLoop = useContext(GameLoopContext)
+  const startTime = useRef(Date.now());
+  const [animationID, setAnimationID] = useState(null);
+  const gameLoop = useContext(GameLoopContext);
   useImperativeHandle(ref, () => ({
     currentTime,
   }));
-  
+
   const setTime = () => {
-    if(Math.floor((Date.now() - startTime.current) / CLOCK_TIME) > currentTime){
+    if (
+      Math.floor((Date.now() - startTime.current) / CLOCK_TIME) > currentTime
+    ) {
       setCurrentTime(Math.floor((Date.now() - startTime.current) / CLOCK_TIME));
     }
   };
 
   useEffect(() => {
-    if(startTime.current === null){
-      startTime.current = Date.now();
-      gameLoop.update(setTime)
+    if (!animationID) {
+      setAnimationID(gameLoop.update(setTime));
     }
-    
+    return () => gameLoop.cleanup(animationID);
   }, [startTime]);
-  
 
   return (
     <View style={styles.container}>

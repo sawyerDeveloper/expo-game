@@ -5,9 +5,12 @@ const MAX_FPS = 60;
 export const GameLoopContextProvider = ({ children }) => {
   let prevTick = 0;
   let callbacks = [];
-  const update = (callback) => {
+  const update = (callback) : number => {
     console.log('update in provider', callback);
-    callbacks.push(callback);
+    const id = Date.now()
+    const obj = {id: id, callback: callback}
+    callbacks.push(obj);
+    return id
   };
   const callUpdates = () => {
     requestAnimationFrame(callUpdates);
@@ -15,9 +18,13 @@ export const GameLoopContextProvider = ({ children }) => {
     if (now == prevTick) return;
     prevTick = now;
     for (var i = 0; i < callbacks.length - 1; i++) {
-      callbacks[i]();
+      callbacks[i].callback();
     }
   };
+
+  const cleanup = (id) => {
+    callbacks.splice(callbacks.findIndex(callback => callback.id === id), 1)
+  }
 
   useEffect(() => {
     const req = requestAnimationFrame(callUpdates);
@@ -25,7 +32,7 @@ export const GameLoopContextProvider = ({ children }) => {
   }, [callUpdates]);
 
   return (
-    <GameLoopContext.Provider value={{ update }}>
+    <GameLoopContext.Provider value={{ update, cleanup }}>
       {children}
     </GameLoopContext.Provider>
   );
