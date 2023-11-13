@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { StyleSheet, View, useWindowDimensions } from 'react-native';
+import { Platform, StyleSheet, View, useWindowDimensions } from 'react-native';
 import {
   GridDimensions,
   GridElement,
@@ -11,8 +11,9 @@ import { Label } from '../designSystem/ui/Label';
 export const GRID_SIZE: GridDimensions = { width: 9, height: 16 };
 export const GameBoard = () => {
   const { width, height } = useWindowDimensions();
+  const yOffSet = Platform.OS === 'web' ? 0 : 78;
   const gridData = useRef<Array<GridElement>>(
-    createGridData(width, height - 78, GRID_SIZE)
+    createGridData(width, height - yOffSet, GRID_SIZE)
   );
 
   return (
@@ -51,6 +52,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   board: {
+    maxWidth: 375,
     position: 'absolute',
     width: '100%',
     height: '100%',
