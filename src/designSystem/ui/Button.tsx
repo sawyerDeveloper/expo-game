@@ -1,12 +1,12 @@
 import { ColorValue, Pressable, StyleSheet, View } from 'react-native';
 import { Label } from './Label';
 
-type ButtonProps = {
+interface ButtonProps {
   title: string;
   onPress: () => void;
   titleColor?: ColorValue;
   fontFamily?: string;
-};
+}
 
 export const Button = ({
   title,

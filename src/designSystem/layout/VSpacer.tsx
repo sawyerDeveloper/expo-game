@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 
-type VSpacerProps = {
+interface VSpacerProps {
   height: number;
 };
 

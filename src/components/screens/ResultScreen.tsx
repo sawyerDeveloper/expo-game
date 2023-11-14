@@ -10,10 +10,10 @@ export type ResultObj = {
   win: Boolean;
 };
 
-type ResultScreenProps = {
+interface ResultScreenProps {
   result: ResultObj;
   scores: [ResultObj];
-};
+}
 
 export const ResultScreen = ({ result, scores }: ResultScreenProps) => {
   const { height } = useWindowDimensions();
