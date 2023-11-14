@@ -9,6 +9,7 @@ import { Grid } from './gameBoard/Grid';
 
 //  Value that reflects the number of grid elements
 export const GRID_SIZE: GridDimensions = { horizontal: 9, vertical: 16 };
+
 export const GameBoard = () => {
   const { width, height } = useWindowDimensions();
   const yOffSet = Platform.OS === 'web' ? 0 : 78;

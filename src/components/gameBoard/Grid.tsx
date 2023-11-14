@@ -9,7 +9,7 @@ export interface GridDataProps {
 export const Grid = ({ gridData }: GridDataProps) => {
   return (
     <View style={styles.container}>
-      {gridData.map((element : GridElement) => {
+      {gridData.map((element: GridElement) => {
         return (
           <View
             key={element.id}

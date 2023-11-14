@@ -1,7 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { GameLoopContext } from './GameLoopContext';
-
-const MAX_FPS = 60;
+import { GameLoopContext, MAX_FPS } from './GameLoopContext';
 
 export const GameLoopContextProvider = ({ children }) => {
   const previousTimeTick = useRef(0);

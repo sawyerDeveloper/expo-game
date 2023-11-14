@@ -14,7 +14,8 @@ import {
 } from '../designSystem/context/gameLoop/GameLoopContext';
 
 const CLOCK_TIME: number = 1000;
-const FPS = 1;
+const FPS: number = 1;
+
 export const Clock = forwardRef((_props, ref) => {
   const [currentTime, setCurrentTime] = useState(0);
   const startTime = useRef<number>(Date.now());
@@ -22,6 +23,7 @@ export const Clock = forwardRef((_props, ref) => {
   const gameLoop = useContext(GameLoopContext);
   //  fpsTick = 1
   const fpsTick = MAX_FPS / (MAX_FPS / FPS);
+
   useImperativeHandle(ref, () => ({
     currentTime,
   }));
