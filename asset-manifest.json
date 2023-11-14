@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/expo-game/static/js/main.83420dd7.js",
-    "static/js/340.3f7135ff.js": "/expo-game/static/js/340.3f7135ff.js",
+    "main.js": "/expo-game/static/js/main.bb3f29e8.js",
+    "static/js/340.95a764f6.js": "/expo-game/static/js/340.95a764f6.js",
     "static/media/neuropol-x-light-italic.otf": "/expo-game/static/media/neuropol-x-light-italic.cd54a9f70ce615af8345.otf",
     "static/media/neuropol-x-regular-italic.otf": "/expo-game/static/media/neuropol-x-regular-italic.c3d200114f367f820ae5.otf",
     "static/media/neuropol-x-bold-italic.otf": "/expo-game/static/media/neuropol-x-bold-italic.4a80a0c85323d23eb28b.otf",
@@ -12,14 +12,14 @@
     "favicon.ico": "/expo-game/favicon.ico",
     "index.html": "/expo-game/index.html",
     "favicon-32.png": "/expo-game/favicon-32.png",
-    "manifest.json": "/expo-game/manifest.json",
     "favicon-16.png": "/expo-game/favicon-16.png",
+    "manifest.json": "/expo-game/manifest.json",
     "serve.json": "/expo-game/serve.json",
-    "main.83420dd7.js.map": "/expo-game/static/js/main.83420dd7.js.map",
-    "340.3f7135ff.js.map": "/expo-game/static/js/340.3f7135ff.js.map"
+    "main.bb3f29e8.js.map": "/expo-game/static/js/main.bb3f29e8.js.map",
+    "340.95a764f6.js.map": "/expo-game/static/js/340.95a764f6.js.map"
   },
   "entrypoints": [
-    "static/js/340.3f7135ff.js",
-    "static/js/main.83420dd7.js"
+    "static/js/340.95a764f6.js",
+    "static/js/main.bb3f29e8.js"
   ]
 }
