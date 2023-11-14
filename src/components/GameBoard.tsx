@@ -5,10 +5,10 @@ import {
   GridElement,
   createGridData,
 } from '../designSystem/utils/CreateGridData';
-import { Label } from '../designSystem/ui/Label';
+import { Grid } from './gameBoard/Grid';
 
 //  Value that reflects the number of grid elements
-export const GRID_SIZE: GridDimensions = { width: 9, height: 16 };
+export const GRID_SIZE: GridDimensions = { horizontal: 9, vertical: 16 };
 export const GameBoard = () => {
   const { width, height } = useWindowDimensions();
   const yOffSet = Platform.OS === 'web' ? 0 : 78;
@@ -18,28 +18,7 @@ export const GameBoard = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.board}>
-        {gridData.current.map((element) => {
-          return (
-            <View
-              key={element.id}
-              style={{
-                position: 'absolute',
-                top: element.y,
-                left: element.x,
-                width: element.width,
-                height: element.height,
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderColor: '#ffc',
-                borderWidth: 0.5,
-              }}
-            >
-              <Label text={element.id} color='#fff' fontFamily='neuroBold' />
-            </View>
-          );
-        })}
-      </View>
+      <Grid gridData={gridData.current} />
     </View>
   );
 };
@@ -50,11 +29,5 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'absolute',
-  },
-  board: {
-    maxWidth: 375,
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
   },
 });

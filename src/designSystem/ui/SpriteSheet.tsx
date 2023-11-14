@@ -2,13 +2,12 @@ import { Image } from 'expo-image';
 import { Asset } from 'expo-asset';
 import { parseData } from '../utils/ParseSpriteSheetData';
 import { useContext, useEffect, useState } from 'react';
-import { GameLoopContext } from '../context/gameLoop/GameLoopContext';
+import { GameLoopContext, MAX_FPS } from '../context/gameLoop/GameLoopContext';
 
 export const SpriteSheet = ({ image, data, fps }) => {
   const { frames } = data;
   const [currentFrame, setCurrentFrame] = useState(0);
   const [images, setImages] = useState([]);
-  const frameRate = Math.floor(1000 / fps);
   const dimensions = {
     width: frames[0].sourceSize.w,
     height: frames[0].sourceSize.h,
@@ -17,7 +16,7 @@ export const SpriteSheet = ({ image, data, fps }) => {
   const gameLoop = useContext(GameLoopContext);
 
   const setFrame = (tick) => {
-    const newFrame = (tick - 1) / 2;
+    const newFrame = (tick - 1) / (MAX_FPS / fps);
     if (!Number.isInteger(newFrame)) return;
     setCurrentFrame(newFrame);
   };
