@@ -28,7 +28,6 @@ export const ResultScreen = ({ result, scores }: ResultScreenProps) => {
         visible={modalVisible}
       >
         <View style={[styles.modal, { marginTop: height / 2 - 80 }]}>
-          <VSpacer height={20} />
           <Label
             color='#fb9'
             fontFamily='neuroBold'
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
   modal: {
     width: 300,
     margin: 40,
-    backgroundColor: '#aaa',
+    backgroundColor: '#333',
     borderRadius: 25,
     padding: 50,
     alignItems: 'center',
