@@ -14,11 +14,11 @@ I am starting the shell and then each game pattern or mechanic gets added one at
 
 - ios:
 
-<img src="https://qr.expo.dev/eas-update?updateId=d4f332fc-6952-4baf-956c-f23210c7e6ce&appScheme=exp&host=u.expo.dev" width="200" height="200" />
+<img src="https://qr.expo.dev/eas-update?updateId=234fd5ae-120f-4928-9300-936023045f3f&appScheme=exp&host=u.expo.dev" width="200" height="200" />
 
 - android:
 
-<img src="https://qr.expo.dev/eas-update?updateId=011b52ae-1c1b-4807-8d68-75080dfcdb12&appScheme=exp&host=u.expo.dev" width="200" height="200" />
+<img src="https://qr.expo.dev/eas-update?updateId=b32aec10-5852-4e1f-90dc-21e5326ef904&appScheme=exp&host=u.expo.dev" width="200" height="200" />
 
 - web:
     https://sawyerdeveloper.github.io/expo-game/
