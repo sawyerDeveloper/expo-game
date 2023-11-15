@@ -8,12 +8,12 @@ import flamesData from '../../designSystem/assets/sprites/flames/flames.json';
 import { Clock } from '../Clock';
 import { GameBoard } from '../GameBoard';
 
-export const GameScreen = ({ win, lose }) => {
+export const GameScreen = ({ gameBoardType, win, lose }) => {
   const clock = useRef(null);
 
   return (
     <GameLoopContextProvider>
-      <GameBoard />
+      <GameBoard type={gameBoardType} />
       <Button
         title='Win'
         fontFamily='neuroBold'
