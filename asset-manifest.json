@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.js": "/expo-game/static/js/main.bb3f29e8.js",
-    "static/js/340.95a764f6.js": "/expo-game/static/js/340.95a764f6.js",
+    "main.js": "/expo-game/static/js/main.ce90098c.js",
+    "static/js/340.ab94f30e.js": "/expo-game/static/js/340.ab94f30e.js",
     "static/media/neuropol-x-light-italic.otf": "/expo-game/static/media/neuropol-x-light-italic.cd54a9f70ce615af8345.otf",
     "static/media/neuropol-x-regular-italic.otf": "/expo-game/static/media/neuropol-x-regular-italic.c3d200114f367f820ae5.otf",
     "static/media/neuropol-x-bold-italic.otf": "/expo-game/static/media/neuropol-x-bold-italic.4a80a0c85323d23eb28b.otf",
     "static/media/neuropol-x-bold.otf": "/expo-game/static/media/neuropol-x-bold.56c7520b4e0271736a25.otf",
     "static/media/neuropol-x-light.otf": "/expo-game/static/media/neuropol-x-light.29b8bcf7f5b3bd2bf581.otf",
     "static/media/neuropol-x-regular.otf": "/expo-game/static/media/neuropol-x-regular.609787c02e74f45a930c.otf",
+    "static/media/BG_daylight.png": "/expo-game/static/media/BG_daylight.f6cd85132ea1ed111c9f.png",
     "static/media/flames.png": "/expo-game/static/media/flames.712283e1e5b2eca95aea.png",
     "favicon.ico": "/expo-game/favicon.ico",
     "index.html": "/expo-game/index.html",
@@ -15,11 +16,11 @@
     "favicon-16.png": "/expo-game/favicon-16.png",
     "manifest.json": "/expo-game/manifest.json",
     "serve.json": "/expo-game/serve.json",
-    "main.bb3f29e8.js.map": "/expo-game/static/js/main.bb3f29e8.js.map",
-    "340.95a764f6.js.map": "/expo-game/static/js/340.95a764f6.js.map"
+    "main.ce90098c.js.map": "/expo-game/static/js/main.ce90098c.js.map",
+    "340.ab94f30e.js.map": "/expo-game/static/js/340.ab94f30e.js.map"
   },
   "entrypoints": [
-    "static/js/340.95a764f6.js",
-    "static/js/main.bb3f29e8.js"
+    "static/js/340.ab94f30e.js",
+    "static/js/main.ce90098c.js"
   ]
 }
