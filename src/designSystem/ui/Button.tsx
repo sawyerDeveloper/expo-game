@@ -30,10 +30,10 @@ export const Button = ({
 const styles = StyleSheet.create({
   container: {
     height: 30,
-    minWidth: 100,
+    minWidth: 150,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#bbb',
+    backgroundColor: '#aaa',
     borderRadius: 10,
   },
 });

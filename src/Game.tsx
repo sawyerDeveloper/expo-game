@@ -2,13 +2,21 @@ import { useState } from 'react';
 import { GameScreen } from './components/screens/GameScreen';
 import { IntroScreen } from './components/screens/IntroScreen';
 import { ResultObj, ResultScreen } from './components/screens/ResultScreen';
+import { GameBoardType } from './components/GameBoard';
 
 export const Game = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameWon, setGameWon] = useState(null);
   const [scores, setScores] = useState([]);
+  const [gameBoardType, setGameBoardType] = useState(GameBoardType.PARALLAX);
 
-  const start = () => {
+  const startGrid = () => {
+    setGameBoardType(GameBoardType.GRID);
+    setGameStarted(true);
+  };
+
+  const startParallax = () => {
+    setGameBoardType(GameBoardType.PARALLAX);
     setGameStarted(true);
   };
 
@@ -31,9 +39,9 @@ export const Game = () => {
   return (
     <>
       {!gameStarted ? (
-        <IntroScreen start={start} />
+        <IntroScreen startGrid={startGrid} startParallax={startParallax} />
       ) : (
-        <GameScreen win={win} lose={lose} />
+        <GameScreen gameBoardType={gameBoardType} win={win} lose={lose} />
       )}
       {gameWon !== null && !gameStarted && (
         <ResultScreen
