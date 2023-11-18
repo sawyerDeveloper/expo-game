@@ -21,4 +21,4 @@ I am starting the shell and then each game pattern or mechanic gets added one at
 <img src="https://qr.expo.dev/eas-update?updateId=b32aec10-5852-4e1f-90dc-21e5326ef904&appScheme=exp&host=u.expo.dev" width="200" height="200" />
 
 - web:
-    https://sawyerdeveloper.github.io/expo-game/
+  https://sawyerdeveloper.github.io/expo-game/
