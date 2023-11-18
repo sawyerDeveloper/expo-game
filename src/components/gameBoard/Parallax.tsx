@@ -1,21 +1,21 @@
 import { Image } from 'expo-image';
 import { StyleSheet, View } from 'react-native';
 import { background } from '../../designSystem/assets/sprites/background';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { GameLoopContext } from '../../designSystem/context/gameLoop/GameLoopContext';
 
 export const Parallax = ({ children = null }) => {
   const [animationID, setAnimationID] = useState(null);
   const gameLoop = useContext(GameLoopContext);
-  const [left, setLeft] = useState(0);
-  const betterLeft = useRef(0)
-  const moveBackground = useRef(() => {
-    setLeft(betterLeft.current--);
-  });
+  const [x, setX] = useState(0);
+
+  const moveBackground = () => {
+    setX((left) => left - 1);
+  };
 
   useEffect(() => {
     if (!animationID) {
-      setAnimationID(gameLoop.subscribe(moveBackground.current));
+      setAnimationID(gameLoop.subscribe(moveBackground));
     }
     return () => gameLoop.cleanup(animationID);
   }, []);
@@ -23,7 +23,7 @@ export const Parallax = ({ children = null }) => {
   return (
     <View style={styles.container}>
       <Image
-        contentPosition={{ left: left, top: 0 }}
+        contentPosition={{ left: x, top: 0 }}
         style={styles.background}
         source={background}
       />
@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
   },
   background: {
     height: 700,
-    width:1649
+    width: 1649,
   },
 });
