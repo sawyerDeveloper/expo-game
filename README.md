@@ -2,7 +2,7 @@
 
 A game built with EXPO SDK and EAS.
 
-I am starting the shell and then each game pattern or mechanic gets added one at a time as the game unfolds.
+It starts with 2 game board types: Grid and Parallax scrolling. It is evolving into something that can support animated characters and moving backgrounds and minigames.
 
 # New Features
 
