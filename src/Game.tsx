@@ -3,7 +3,7 @@ import { GameScreen } from './components/screens/GameScreen';
 import { IntroScreen } from './components/screens/IntroScreen';
 import { ResultObj, ResultScreen } from './components/screens/ResultScreen';
 import { GameBoardType } from './components/GameBoard';
-import { AudioContext } from './designSystem/context/audio/AudioContext';
+import { GameAudioContext } from './designSystem/context/audio/GameAudioContext';
 import { AudioAssets } from './designSystem/assets/audio';
 
 export const Game = () => {
@@ -11,7 +11,8 @@ export const Game = () => {
   const [gameWon, setGameWon] = useState(null);
   const [scores, setScores] = useState([]);
   const [gameBoardType, setGameBoardType] = useState(null);
-  const audio = useContext(AudioContext);
+
+  const audio = useContext(GameAudioContext);
 
   const startGrid = () => {
     audio.playSound(AudioAssets.effects.effect1);

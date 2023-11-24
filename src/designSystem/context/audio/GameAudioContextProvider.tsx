@@ -1,17 +1,15 @@
 import { useState } from 'react';
 import { Audio } from 'expo-av';
-import { AudioContext } from './AudioContext';
+import { GameAudioContext } from './GameAudioContext';
 
-export const AudioContextProvider = ({ children }) => {
-  const [loadedAudio, setLoadedAudio] = useState(
-    new Array<Audio.Sound>()
-  );
-  const [currentMusic, setCurrentMusic] = useState()
+export const GameAudioContextProvider = ({ children }) => {
+  const [loadedAudio, setLoadedAudio] = useState(new Array<Audio.Sound>());
+  const [currentMusic, setCurrentMusic] = useState();
 
   async function playSound(soundAsset, loop = false) {
     if (!loadedAudio[soundAsset]) {
       const { sound } = await Audio.Sound.createAsync(soundAsset);
-      sound.setIsLoopingAsync(loop)
+      sound.setIsLoopingAsync(loop);
       loadedAudio[soundAsset] = sound;
       setLoadedAudio(loadedAudio);
     }
@@ -19,18 +17,18 @@ export const AudioContextProvider = ({ children }) => {
   }
 
   const playMusic = (soundAsset) => {
-    pauseSound(currentMusic)
-    setCurrentMusic(soundAsset)
-    playSound(soundAsset, true)
-  }
+    pauseSound(currentMusic);
+    setCurrentMusic(soundAsset);
+    playSound(soundAsset, true);
+  };
 
   const pauseSound = (soundAsset) => {
     loadedAudio[soundAsset]?.pauseAsync();
   };
 
   return (
-    <AudioContext.Provider value={{ playSound, pauseSound, playMusic }}>
+    <GameAudioContext.Provider value={{ playSound, pauseSound, playMusic }}>
       {children}
-    </AudioContext.Provider>
+    </GameAudioContext.Provider>
   );
 };
