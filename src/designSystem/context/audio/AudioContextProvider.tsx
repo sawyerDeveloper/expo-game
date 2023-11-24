@@ -6,6 +6,7 @@ export const AudioContextProvider = ({ children }) => {
   const [loadedAudio, setLoadedAudio] = useState(
     new Array<Audio.Sound>()
   );
+  const [currentMusic, setCurrentMusic] = useState()
 
   async function playSound(soundAsset, loop = false) {
     if (!loadedAudio[soundAsset]) {
@@ -17,12 +18,18 @@ export const AudioContextProvider = ({ children }) => {
     await loadedAudio[soundAsset].playAsync();
   }
 
+  const playMusic = (soundAsset) => {
+    pauseSound(currentMusic)
+    setCurrentMusic(soundAsset)
+    playSound(soundAsset, true)
+  }
+
   const pauseSound = (soundAsset) => {
-    loadedAudio[soundAsset].pauseAsync();
+    loadedAudio[soundAsset]?.pauseAsync();
   };
 
   return (
-    <AudioContext.Provider value={{ playSound, pauseSound }}>
+    <AudioContext.Provider value={{ playSound, pauseSound, playMusic }}>
       {children}
     </AudioContext.Provider>
   );
