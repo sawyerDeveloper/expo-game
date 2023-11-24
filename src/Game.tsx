@@ -10,8 +10,9 @@ export const Game = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameWon, setGameWon] = useState(null);
   const [scores, setScores] = useState([]);
-  const [gameBoardType, setGameBoardType] = useState(GameBoardType.PARALLAX);
+  const [gameBoardType, setGameBoardType] = useState(null);
   const audio = useContext(AudioContext);
+
   const startGrid = () => {
     audio.playSound(AudioAssets.effects.effect1);
     setGameBoardType(GameBoardType.GRID);
@@ -42,14 +43,13 @@ export const Game = () => {
 
   useEffect(() => {
     if (gameStarted) {
-      audio.pauseSound(AudioAssets.music.intro);
       if (gameBoardType === GameBoardType.GRID) {
-        audio.playSound(AudioAssets.music.grid);
+        audio.playMusic(AudioAssets.music.grid);
       } else {
-        audio.playSound(AudioAssets.music.parallax);
+        audio.playMusic(AudioAssets.music.parallax);
       }
     } else {
-      audio.playSound(AudioAssets.music.intro, true);
+      audio.playMusic(AudioAssets.music.intro);
     }
   }, [gameStarted, gameBoardType]);
 
