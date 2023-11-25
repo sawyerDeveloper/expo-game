@@ -3,4 +3,6 @@ export const GameAudioContext = createContext({
   playSound: (name: string, loop: boolean = false) => {},
   playMusic: (name: string) => {},
   pauseSound: (name: string) => {},
+  muteMusic: () => {},
+  musicMuted: true
 });

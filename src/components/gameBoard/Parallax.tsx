@@ -9,7 +9,9 @@ export const Parallax = ({ children = null }) => {
   const gameLoop = useContext(GameLoopContext);
   const [x, setX] = useState(0);
 
+
   const moveBackground = () => {
+
     setX((left) => left - 1);
   };
 

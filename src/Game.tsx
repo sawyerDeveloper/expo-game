@@ -5,6 +5,7 @@ import { ResultObj, ResultScreen } from './components/screens/ResultScreen';
 import { GameBoardType } from './components/GameBoard';
 import { GameAudioContext } from './designSystem/context/audio/GameAudioContext';
 import { AudioAssets } from './designSystem/assets/audio';
+import { GameWrapper } from './designSystem/layout/GameWrapper';
 
 export const Game = () => {
   const [gameStarted, setGameStarted] = useState(false);
@@ -55,7 +56,7 @@ export const Game = () => {
   }, [gameStarted, gameBoardType]);
 
   return (
-    <>
+    <GameWrapper>
       {!gameStarted ? (
         <IntroScreen startGrid={startGrid} startParallax={startParallax} />
       ) : (
@@ -67,6 +68,6 @@ export const Game = () => {
           scores={scores as [ResultObj]}
         />
       )}
-    </>
+    </GameWrapper>
   );
 };
