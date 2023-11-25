@@ -1,18 +1,19 @@
 import { Image } from 'expo-image';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import { background } from '../../designSystem/assets/sprites/background';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { GameLoopContext } from '../../designSystem/context/gameLoop/GameLoopContext';
 
 export const Parallax = ({ children = null }) => {
+  const { width } = useWindowDimensions();
   const [animationID, setAnimationID] = useState(null);
   const gameLoop = useContext(GameLoopContext);
   const [x, setX] = useState(0);
-
+  const goLeft = useRef(false);
 
   const moveBackground = () => {
-
-    setX((left) => left - 1);
+    const newValue = goLeft.current ? -1 : 1;
+    setX((left) => left - newValue);
   };
 
   useEffect(() => {
@@ -22,8 +23,12 @@ export const Parallax = ({ children = null }) => {
     return () => gameLoop.cleanup(animationID);
   }, []);
 
+  const pointerDown = (event) => {
+    goLeft.current = event.clientX > width / 2;
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={styles.container} onPointerDown={pointerDown}>
       <Image
         contentPosition={{ left: x, top: 0 }}
         style={styles.background}
