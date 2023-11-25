@@ -5,7 +5,7 @@ import { ResultObj, ResultScreen } from './components/screens/ResultScreen';
 import { GameBoardType } from './components/GameBoard';
 import { GameAudioContext } from './designSystem/context/audio/GameAudioContext';
 import { AudioAssets } from './designSystem/assets/audio';
-import { GameWrapper } from './designSystem/layout/GameWrapper';
+import { GameWrapper } from './designSystem/layout/containers/GameWrapper';
 
 export const Game = () => {
   const [gameStarted, setGameStarted] = useState(false);
@@ -13,16 +13,16 @@ export const Game = () => {
   const [scores, setScores] = useState([]);
   const [gameBoardType, setGameBoardType] = useState(null);
 
-  const audio = useContext(GameAudioContext);
+  const { playMusic, playSound } = useContext(GameAudioContext);
 
   const startGrid = () => {
-    audio.playSound(AudioAssets.effects.effect1);
+    playSound(AudioAssets.effects.effect1);
     setGameBoardType(GameBoardType.GRID);
     setGameStarted(true);
   };
 
   const startParallax = () => {
-    audio.playSound(AudioAssets.effects.effect1);
+    playSound(AudioAssets.effects.effect1);
     setGameBoardType(GameBoardType.PARALLAX);
     setGameStarted(true);
   };
@@ -46,12 +46,12 @@ export const Game = () => {
   useEffect(() => {
     if (gameStarted) {
       if (gameBoardType === GameBoardType.GRID) {
-        audio.playMusic(AudioAssets.music.grid);
+        playMusic(AudioAssets.music.grid);
       } else {
-        audio.playMusic(AudioAssets.music.parallax);
+        playMusic(AudioAssets.music.parallax);
       }
     } else {
-      audio.playMusic(AudioAssets.music.intro);
+      playMusic(AudioAssets.music.intro);
     }
   }, [gameStarted, gameBoardType]);
 

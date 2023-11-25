@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { GameSettingsContext } from './GameSettingsContext';
-import { Modal, View } from 'react-native';
+import { Modal, StyleSheet, View, useWindowDimensions } from 'react-native';
 import { Button } from '../../ui/Button';
+import { Label } from '../../ui/Label';
+import { VSpacer } from '../../layout/VSpacer';
 
 export const GameSettingsContextProvider = ({ children }) => {
+  const { height } = useWindowDimensions();
   const [showSettings, setShowSettings] = useState(false);
 
   const openSettings = () => {
@@ -14,9 +17,17 @@ export const GameSettingsContextProvider = ({ children }) => {
   };
   return (
     <GameSettingsContext.Provider value={{ openSettings }}>
-      <Modal visible={showSettings}>
-        <View>
-            <Button title='Close' onPress={() => setShowSettings(false)} />
+      <Modal
+        presentationStyle='overFullScreen'
+        animationType='slide'
+        transparent={true}
+        visible={showSettings}
+      >
+        <View style={[styles.container, { marginTop: height / 2 - 80 }]}>
+          <Label text='Settings' fontFamily='neuroBold' color='#fff' />
+          <VSpacer height={30} />
+          <Button title='Close' onPress={() => setShowSettings(false)} />
+          <VSpacer height={30} />
           <Button title='Clear Data' onPress={clearData} />
         </View>
       </Modal>
@@ -25,3 +36,16 @@ export const GameSettingsContextProvider = ({ children }) => {
     </GameSettingsContext.Provider>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    width: 300,
+    margin: 40,
+    backgroundColor: '#333',
+    borderRadius: 25,
+    padding: 50,
+    alignItems: 'center',
+    alignSelf: 'center',
+    alignContent: 'center',
+  },
+});

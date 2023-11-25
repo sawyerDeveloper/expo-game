@@ -14,14 +14,11 @@ export const Button = ({
   titleColor,
   fontFamily,
 }: ButtonProps) => {
+  const color = titleColor ? titleColor : '#b2b';
   return (
     <Pressable onPress={onPress}>
       <View style={styles.container}>
-        <Label
-          fontFamily={fontFamily}
-          text={title}
-          color={titleColor ? titleColor : '#b2b'}
-        />
+        <Label fontFamily={fontFamily} text={title} color={color} />
       </View>
     </Pressable>
   );

@@ -3,8 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
-import { GameAudioContextProvider } from '../context/audio/GameAudioContextProvider';
-import { GameSettingsContextProvider } from '../context/settings/GameSettingsContextProvider';
+import { Providers } from './appContainer/Providers';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,9 +29,7 @@ export const AppContainer = ({ children }) => {
 
   return (
     <SafeAreaView onLayout={onLayoutRootView} style={styles.container}>
-      <GameSettingsContextProvider>
-        <GameAudioContextProvider>{children}</GameAudioContextProvider>
-      </GameSettingsContextProvider>
+      <Providers>{children}</Providers>
       <StatusBar style='dark' />
     </SafeAreaView>
   );

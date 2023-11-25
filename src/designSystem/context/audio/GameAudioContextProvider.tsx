@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Audio } from 'expo-av';
 import { GameAudioContext } from './GameAudioContext';
+import { AudioAssets } from '../../assets/audio';
 
 export const GameAudioContextProvider = ({ children }) => {
   const [loadedAudio, setLoadedAudio] = useState(new Array<Audio.Sound>());
-  const [currentMusic, setCurrentMusic] = useState();
+  const [currentMusic, setCurrentMusic] = useState(AudioAssets.music.intro);
   const [musicMuted, setMusicMuted] = useState(true);
 
   async function playSound(soundAsset, loop = false, loadMuted = false) {
@@ -30,7 +31,10 @@ export const GameAudioContextProvider = ({ children }) => {
 
   const muteMusic = () => {
     setMusicMuted(!musicMuted);
-    console.log(currentMusic);
+    loadedAudio[currentMusic]?.setIsMutedAsync(musicMuted)
+    if(!musicMuted){
+      loadedAudio[currentMusic].playAsync()
+    }
   };
 
   return (
