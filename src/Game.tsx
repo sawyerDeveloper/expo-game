@@ -56,18 +56,20 @@ export const Game = () => {
   }, [gameStarted, gameBoardType]);
 
   return (
-    <GameWrapper>
+    <>
       {!gameStarted ? (
-        <IntroScreen startGrid={startGrid} startParallax={startParallax} />
+        <GameWrapper>
+          <IntroScreen startGrid={startGrid} startParallax={startParallax} />
+          {gameWon !== null && (
+            <ResultScreen
+              result={{ win: gameWon, score: scores[0].score }}
+              scores={scores as [ResultObj]}
+            />
+          )}
+        </GameWrapper>
       ) : (
         <GameScreen gameBoardType={gameBoardType} win={win} lose={lose} />
       )}
-      {gameWon !== null && !gameStarted && (
-        <ResultScreen
-          result={{ win: gameWon, score: scores[0].score }}
-          scores={scores as [ResultObj]}
-        />
-      )}
-    </GameWrapper>
+    </>
   );
 };

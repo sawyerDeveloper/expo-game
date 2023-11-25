@@ -9,12 +9,12 @@ SplashScreen.preventAutoHideAsync();
 
 export const AppContainer = ({ children }) => {
   const [fontsLoaded, fontError] = useFonts({
-    neuroLight: require('../assets/fonts/neuropol-x-light.otf'),
-    neuroLightItalic: require('../assets/fonts/neuropol-x-light-italic.otf'),
-    neuro: require('../assets/fonts/neuropol-x-regular.otf'),
-    neuroItalic: require('../assets/fonts/neuropol-x-regular-italic.otf'),
-    neuroBold: require('../assets/fonts/neuropol-x-bold.otf'),
-    neuroBoldItalic: require('../assets/fonts/neuropol-x-bold-italic.otf'),
+    neuroLight: require('../../assets/fonts/neuropol-x-light.otf'),
+    neuroLightItalic: require('../../assets/fonts/neuropol-x-light-italic.otf'),
+    neuro: require('../../assets/fonts/neuropol-x-regular.otf'),
+    neuroItalic: require('../../assets/fonts/neuropol-x-regular-italic.otf'),
+    neuroBold: require('../../assets/fonts/neuropol-x-bold.otf'),
+    neuroBoldItalic: require('../../assets/fonts/neuropol-x-bold-italic.otf'),
   });
 
   const onLayoutRootView = useCallback(async () => {

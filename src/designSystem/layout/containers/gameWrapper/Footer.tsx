@@ -7,7 +7,7 @@ export const Footer = () => {
   const { openSettings } = useContext(GameSettingsContext);
   return (
     <View style={styles.container}>
-      <Button title='Settings' onPress={openSettings} />
+      <Button fontFamily='neuroBold' title='Settings' onPress={openSettings} />
     </View>
   );
 };
@@ -17,5 +17,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    height: 100,
+    width: '100%',
   },
 });

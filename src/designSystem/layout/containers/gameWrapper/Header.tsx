@@ -7,7 +7,7 @@ export const Header = () => {
   const { musicMuted, muteMusic } = useContext(GameAudioContext);
   return (
     <View style={styles.container}>
-      <Button title={musicMuted ? 'Mute' : 'UnMute'} onPress={muteMusic} />
+      <Button fontFamily='neuroBold' title={musicMuted ? 'Mute' : 'UnMute'} onPress={muteMusic} />
     </View>
   );
 };
@@ -17,5 +17,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    height: 100,
+    width: '100%',
   },
 });
