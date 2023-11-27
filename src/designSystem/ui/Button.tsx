@@ -6,6 +6,7 @@ interface ButtonProps {
   onPress: () => void;
   titleColor?: ColorValue;
   fontFamily?: string;
+  fontSize?: number;
 }
 
 export const Button = ({
@@ -13,14 +14,17 @@ export const Button = ({
   onPress,
   titleColor,
   fontFamily,
+  fontSize,
 }: ButtonProps) => {
+  const color = titleColor ? titleColor : '#b2b';
   return (
     <Pressable onPress={onPress}>
       <View style={styles.container}>
         <Label
+          size={fontSize}
           fontFamily={fontFamily}
           text={title}
-          color={titleColor ? titleColor : '#b2b'}
+          color={color}
         />
       </View>
     </Pressable>
@@ -35,5 +39,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#aaa',
     borderRadius: 10,
+    paddingLeft: 10,
+    paddingRight: 10
   },
 });

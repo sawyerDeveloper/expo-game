@@ -3,28 +3,32 @@ import { GameScreen } from './components/screens/GameScreen';
 import { IntroScreen } from './components/screens/IntroScreen';
 import { ResultObj, ResultScreen } from './components/screens/ResultScreen';
 import { GameBoardType } from './components/GameBoard';
-import { AudioContext } from './designSystem/context/audio/AudioContext';
+import { GameAudioContext } from './designSystem/context/audio/GameAudioContext';
 import { AudioAssets } from './designSystem/assets/audio';
+import { GameWrapper } from './designSystem/layout/containers/GameWrapper';
 
 export const Game = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameWon, setGameWon] = useState(null);
   const [scores, setScores] = useState([]);
-  const [gameBoardType, setGameBoardType] = useState(GameBoardType.PARALLAX);
-  const audio = useContext(AudioContext);
+  const [gameBoardType, setGameBoardType] = useState(null);
+
+  const { playMusic, playSound } = useContext(GameAudioContext);
+
   const startGrid = () => {
-    audio.playSound(AudioAssets.effects.effect1);
+    playSound(AudioAssets.effects.effect1);
     setGameBoardType(GameBoardType.GRID);
     setGameStarted(true);
   };
 
   const startParallax = () => {
-    audio.playSound(AudioAssets.effects.effect1);
+    playSound(AudioAssets.effects.effect2);
     setGameBoardType(GameBoardType.PARALLAX);
     setGameStarted(true);
   };
 
   const win = (score: number) => {
+    playSound(AudioAssets.effects.effect1);
     const resultObj: ResultObj = { win: true, score: score };
     scores.push(resultObj);
     setScores(scores);
@@ -33,6 +37,7 @@ export const Game = () => {
   };
 
   const lose = (score: number) => {
+    playSound(AudioAssets.effects.effect2);
     const resultObj: ResultObj = { win: false, score: score };
     scores.push(resultObj);
     setScores(scores);
@@ -42,29 +47,30 @@ export const Game = () => {
 
   useEffect(() => {
     if (gameStarted) {
-      audio.pauseSound(AudioAssets.music.intro);
       if (gameBoardType === GameBoardType.GRID) {
-        audio.playSound(AudioAssets.music.grid);
+        playMusic(AudioAssets.music.grid);
       } else {
-        audio.playSound(AudioAssets.music.parallax);
+        playMusic(AudioAssets.music.parallax);
       }
     } else {
-      audio.playSound(AudioAssets.music.intro, true);
+      playMusic(AudioAssets.music.intro);
     }
   }, [gameStarted, gameBoardType]);
 
   return (
     <>
       {!gameStarted ? (
-        <IntroScreen startGrid={startGrid} startParallax={startParallax} />
+        <GameWrapper>
+          <IntroScreen startGrid={startGrid} startParallax={startParallax} />
+          {gameWon !== null && (
+            <ResultScreen
+              result={{ win: gameWon, score: scores[0].score }}
+              scores={scores as [ResultObj]}
+            />
+          )}
+        </GameWrapper>
       ) : (
         <GameScreen gameBoardType={gameBoardType} win={win} lose={lose} />
-      )}
-      {gameWon !== null && !gameStarted && (
-        <ResultScreen
-          result={{ win: gameWon, score: scores[0].score }}
-          scores={scores as [ResultObj]}
-        />
       )}
     </>
   );

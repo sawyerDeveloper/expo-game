@@ -3,17 +3,18 @@ import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
+import { Providers } from './appContainer/Providers';
 
 SplashScreen.preventAutoHideAsync();
 
 export const AppContainer = ({ children }) => {
   const [fontsLoaded, fontError] = useFonts({
-    neuroLight: require('../assets/fonts/neuropol-x-light.otf'),
-    neuroLightItalic: require('../assets/fonts/neuropol-x-light-italic.otf'),
-    neuro: require('../assets/fonts/neuropol-x-regular.otf'),
-    neuroItalic: require('../assets/fonts/neuropol-x-regular-italic.otf'),
-    neuroBold: require('../assets/fonts/neuropol-x-bold.otf'),
-    neuroBoldItalic: require('../assets/fonts/neuropol-x-bold-italic.otf'),
+    neuroLight: require('../../assets/fonts/neuropol-x-light.otf'),
+    neuroLightItalic: require('../../assets/fonts/neuropol-x-light-italic.otf'),
+    neuro: require('../../assets/fonts/neuropol-x-regular.otf'),
+    neuroItalic: require('../../assets/fonts/neuropol-x-regular-italic.otf'),
+    neuroBold: require('../../assets/fonts/neuropol-x-bold.otf'),
+    neuroBoldItalic: require('../../assets/fonts/neuropol-x-bold-italic.otf'),
   });
 
   const onLayoutRootView = useCallback(async () => {
@@ -28,7 +29,7 @@ export const AppContainer = ({ children }) => {
 
   return (
     <SafeAreaView onLayout={onLayoutRootView} style={styles.container}>
-      {children}
+      <Providers>{children}</Providers>
       <StatusBar style='dark' />
     </SafeAreaView>
   );
