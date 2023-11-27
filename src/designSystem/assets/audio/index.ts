@@ -6,5 +6,6 @@ export const AudioAssets = {
   },
   effects: {
     effect1: require('./effects/effect1.m4a'),
+    effect2: require('./effects/effect2.m4a'),
   },
 };

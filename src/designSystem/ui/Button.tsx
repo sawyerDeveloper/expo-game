@@ -39,5 +39,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#aaa',
     borderRadius: 10,
+    padding: 10
   },
 });

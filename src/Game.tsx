@@ -22,12 +22,13 @@ export const Game = () => {
   };
 
   const startParallax = () => {
-    playSound(AudioAssets.effects.effect1);
+    playSound(AudioAssets.effects.effect2);
     setGameBoardType(GameBoardType.PARALLAX);
     setGameStarted(true);
   };
 
   const win = (score: number) => {
+    playSound(AudioAssets.effects.effect1);
     const resultObj: ResultObj = { win: true, score: score };
     scores.push(resultObj);
     setScores(scores);
@@ -36,6 +37,7 @@ export const Game = () => {
   };
 
   const lose = (score: number) => {
+    playSound(AudioAssets.effects.effect2);
     const resultObj: ResultObj = { win: false, score: score };
     scores.push(resultObj);
     setScores(scores);

@@ -20,14 +20,14 @@ export const IntroScreen = ({ startGrid, startParallax }) => {
       />
       <VSpacer height={40} />
       <Button
-        fontSize={22}
+        fontSize={20}
         title='Start Grid'
         fontFamily='neuroBold'
         onPress={startGrid}
       />
       <VSpacer height={30} />
       <Button
-        fontSize={22}
+        fontSize={20}
         title='Start Parallax'
         fontFamily='neuroBold'
         onPress={startParallax}
