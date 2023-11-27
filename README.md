@@ -16,11 +16,11 @@ It starts with 2 game board types: Grid and Parallax scrolling. It is evolving i
 
 - ios:
 
-<img src="https://qr.expo.dev/eas-update?updateId=574a4acd-6cb4-41c1-9a46-88d6a3b0b36d&appScheme=exp&host=u.expo.dev" width="200" height="200" />
+<img src="https://qr.expo.dev/eas-update?updateId=9b709102-d899-45c8-810a-262603d0311d&appScheme=exp&host=u.expo.dev" width="200" height="200" />
 
 - android:
 
-<img src="https://qr.expo.dev/eas-update?updateId=ba03b74f-47c2-4f5c-b2d2-13c1a073304d&appScheme=exp&host=u.expo.dev" width="200" height="200" />
+<img src="https://qr.expo.dev/eas-update?updateId=ee956c06-2728-454a-8c08-e56ff901cc90&appScheme=exp&host=u.expo.dev" width="200" height="200" />
 
 - web:
   https://sawyerdeveloper.github.io/expo-game/
