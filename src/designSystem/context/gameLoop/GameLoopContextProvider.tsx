@@ -4,12 +4,12 @@ import { GameLoopContext, MAX_FPS } from './GameLoopContext';
 export const GameLoopContextProvider = ({ children }) => {
   const previousTimeTick = useRef(0);
   const currentFpsTick = useRef(0);
-  let callbacks = [];
+  const callbacks = useRef([]);
 
   const subscribe = (callback): number => {
     const id = Date.now();
     const obj = { id: id, callback: callback };
-    callbacks.push(obj);
+    callbacks.current.push(obj);
     return id;
   };
 
@@ -19,9 +19,8 @@ export const GameLoopContextProvider = ({ children }) => {
     if (now == previousTimeTick.current) return;
     previousTimeTick.current = now;
     currentFpsTick.current++;
-
-    for (var i = 0; i < callbacks.length; i++) {
-      callbacks[i].callback(currentFpsTick.current);
+    for (var i = 0; i < callbacks.current.length; i++) {
+      callbacks.current[i].callback(currentFpsTick.current);
     }
 
     if (currentFpsTick.current == 60) {
@@ -30,8 +29,8 @@ export const GameLoopContextProvider = ({ children }) => {
   };
 
   const cleanup = (id) => {
-    callbacks.splice(
-      callbacks.findIndex((callback) => callback.id === id),
+    callbacks.current.splice(
+      callbacks.current.findIndex((callback) => callback.id === id),
       1
     );
   };
