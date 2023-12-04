@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { Label } from '../../designSystem/ui/Label';
 import { GridElement } from '../../designSystem/utils/CreateGridData';
 import { ViewContainerAbsolute } from '../../designSystem/layout/containers/ViewContainerAbsolute';
