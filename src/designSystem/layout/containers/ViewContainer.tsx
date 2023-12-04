@@ -5,15 +5,26 @@ export type ViewContainerPropTypes = {
   children: null | ReactElement | ReactElement[];
   height?: number | DimensionValue;
   width?: number | DimensionValue;
+  absolute?: boolean;
 };
 
 export const ViewContainer = ({
   children,
   height = '100%',
   width = '100%',
+  absolute = false,
 }: ViewContainerPropTypes) => {
   return (
-    <View style={[styles.container, { height: height, width: width }]}>
+    <View
+      style={[
+        styles.container,
+        {
+          height: height,
+          width: width,
+          position: absolute ? 'absolute' : 'relative',
+        },
+      ]}
+    >
       {children}
     </View>
   );

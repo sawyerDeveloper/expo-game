@@ -1,6 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import { Label } from '../../designSystem/ui/Label';
 import { GridElement } from '../../designSystem/utils/CreateGridData';
+import { ViewContainerAbsolute } from '../../designSystem/layout/containers/ViewContainerAbsolute';
 
 export interface GridDataProps {
   gridData: GridElement[];
@@ -8,7 +9,7 @@ export interface GridDataProps {
 
 export const Grid = ({ gridData }: GridDataProps) => {
   return (
-    <View style={styles.container}>
+    <ViewContainerAbsolute>
       {gridData.map((element: GridElement) => {
         return (
           <View
@@ -29,14 +30,6 @@ export const Grid = ({ gridData }: GridDataProps) => {
           </View>
         );
       })}
-    </View>
+    </ViewContainerAbsolute>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-  },
-});
