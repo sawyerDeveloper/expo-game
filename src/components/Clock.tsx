@@ -1,4 +1,3 @@
-import { StyleSheet, View } from 'react-native';
 import { Label } from '../designSystem/ui/Label';
 import {
   forwardRef,
@@ -12,6 +11,7 @@ import {
   GameLoopContext,
   MAX_FPS,
 } from '../designSystem/context/gameLoop/GameLoopContext';
+import { ViewContainer } from '../designSystem/layout/containers/ViewContainer';
 
 const CLOCK_TIME: number = 1000;
 const FPS: number = 1;
@@ -42,18 +42,8 @@ export const Clock = forwardRef((_props, ref) => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <ViewContainer height={100}>
       <Label fontFamily='neuro' color='#fff' size={26} text={currentTime} />
-    </View>
+    </ViewContainer>
   );
-});
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: 100,
-    justifyContent: 'center',
-    alignSelf: 'center',
-    alignItems: 'center',
-  },
 });
