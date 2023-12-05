@@ -1,10 +1,6 @@
 import { useRef } from 'react';
-import { Button } from '../../designSystem/ui/Button';
-import { VSpacer } from '../../designSystem/layout/VSpacer';
-import { SpriteSheet } from '../../designSystem/ui/SpriteSheet';
-import { GameLoopContextProvider } from '../../designSystem/context/gameLoop/GameLoopContextProvider';
-import { flamesSheet } from '../../designSystem/assets/sprites/flames';
-import flamesData from '../../designSystem/assets/sprites/flames/flames.json';
+import { Button, VSpacer, SpriteSheet, GameLoopContextProvider } from '../../designSystem/';
+import { flamesSheet, flamesData } from '../../designSystem/assets/sprites/flames';
 import { Clock } from '../Clock';
 import { GameBoard } from '../GameBoard';
 

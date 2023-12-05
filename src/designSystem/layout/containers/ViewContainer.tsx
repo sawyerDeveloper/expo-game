@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { DimensionValue, StyleSheet, View } from 'react-native';
 
-export type ViewContainerPropTypes = {
+type ViewContainerPropTypes = {
   children: ReactElement | ReactElement[];
   height?: number | DimensionValue;
   width?: number | DimensionValue;
