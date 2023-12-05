@@ -1,13 +1,13 @@
 import { useRef } from 'react';
 import { Platform, useWindowDimensions } from 'react-native';
+import { Grid } from './gameBoard/Grid';
+import { Parallax } from './gameBoard/Parallax';
 import {
+  ViewContainerAbsolute,
   GridDimensions,
   GridElement,
   createGridData,
-} from '../designSystem/utils/CreateGridData';
-import { Grid } from './gameBoard/Grid';
-import { Parallax } from './gameBoard/Parallax';
-import { ViewContainerAbsolute } from '../designSystem/layout/containers/ViewContainerAbsolute';
+} from '../designSystem/';
 
 //  Value that reflects the number of grid elements
 export const GRID_SIZE: GridDimensions = { horizontal: 9, vertical: 16 };

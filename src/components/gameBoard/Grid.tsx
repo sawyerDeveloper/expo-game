@@ -1,7 +1,5 @@
 import { View } from 'react-native';
-import { Label } from '../../designSystem/ui/Label';
-import { GridElement } from '../../designSystem/utils/CreateGridData';
-import { ViewContainerAbsolute } from '../../designSystem/layout/containers/ViewContainerAbsolute';
+import { Label, ViewContainerAbsolute, GridElement } from '../../designSystem/';
 
 export interface GridDataProps {
   gridData: GridElement[];

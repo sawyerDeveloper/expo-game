@@ -1,4 +1,4 @@
-import { Label } from '../designSystem/ui/Label';
+import { Label, ViewContainer } from '../designSystem/';
 import {
   forwardRef,
   useContext,
@@ -11,7 +11,6 @@ import {
   GameLoopContext,
   MAX_FPS,
 } from '../designSystem/context/gameLoop/GameLoopContext';
-import { ViewContainer } from '../designSystem/layout/containers/ViewContainer';
 
 const CLOCK_TIME: number = 1000;
 const FPS: number = 1;

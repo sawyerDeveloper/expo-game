@@ -6,6 +6,7 @@ type ViewContainerPropTypes = {
   height?: number | DimensionValue;
   width?: number | DimensionValue;
   absolute?: boolean;
+  flex?: boolean;
 };
 
 export const ViewContainer = ({
@@ -13,10 +14,12 @@ export const ViewContainer = ({
   height = '100%',
   width = '100%',
   absolute = false,
+  flex = false,
 }: ViewContainerPropTypes) => {
   return (
     <View
       style={[
+        flex ? styles.flex : null,
         styles.container,
         {
           height: height,
@@ -35,5 +38,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     alignItems: 'center',
+  },
+  flex: {
+    flex: 1,
   },
 });
