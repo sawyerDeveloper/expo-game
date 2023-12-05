@@ -1,9 +1,7 @@
-import { Label } from '../../designSystem/ui/Label';
-import { VSpacer } from '../../designSystem/layout/VSpacer';
+import { Button, Label, VSpacer, ViewContainer} from '../../designSystem/';
 import { LastResults } from './resultScreen/LastResults';
 import { Modal, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { useState } from 'react';
-import { Button } from '../../designSystem/ui/Button';
 
 export type ResultObj = {
   score: number;
@@ -20,7 +18,7 @@ export const ResultScreen = ({ result, scores }: ResultScreenProps) => {
   const { win } = result;
   const [modalVisible, setModalVisible] = useState(true);
   return (
-    <View style={styles.container}>
+    <ViewContainer>
       <Modal
         presentationStyle='overFullScreen'
         animationType='slide'
@@ -48,15 +46,11 @@ export const ResultScreen = ({ result, scores }: ResultScreenProps) => {
       </Modal>
       <VSpacer height={10} />
       {scores && <LastResults results={scores.reverse()} />}
-    </View>
+    </ViewContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   modal: {
     width: 300,
     margin: 40,

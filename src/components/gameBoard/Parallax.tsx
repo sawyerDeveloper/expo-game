@@ -2,7 +2,7 @@ import { Image } from 'expo-image';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import { background } from '../../designSystem/assets/sprites/background';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { GameLoopContext } from '../../designSystem/context/gameLoop/GameLoopContext';
+import { GameLoopContext } from '../../designSystem/';
 
 export const Parallax = ({ children = null }) => {
   const { width } = useWindowDimensions();

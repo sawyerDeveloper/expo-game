@@ -1,4 +1,9 @@
-import { Label, ViewContainer } from '../designSystem/';
+import {
+  Label,
+  ViewContainer,
+  GameLoopContext,
+  MAX_FPS,
+} from '../designSystem/';
 import {
   forwardRef,
   useContext,
@@ -7,10 +12,6 @@ import {
   useRef,
   useState,
 } from 'react';
-import {
-  GameLoopContext,
-  MAX_FPS,
-} from '../designSystem/context/gameLoop/GameLoopContext';
 
 const CLOCK_TIME: number = 1000;
 const FPS: number = 1;
