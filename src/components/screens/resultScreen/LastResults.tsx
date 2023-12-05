@@ -1,10 +1,11 @@
-import { ViewContainer, Label } from '../../../designSystem/';
+import { StyleSheet, View } from 'react-native';
+import { Label } from '../../../designSystem/';
 
 export const LastResults = ({ results }) => {
   return (
     <>
       <Label color='#fb9' fontFamily='neuroBoldItalic' text='Previous games' />
-      <ViewContainer>
+      <View style={styles.container}>
         {results.map((resultObj) => {
           return (
             <Label
@@ -15,7 +16,13 @@ export const LastResults = ({ results }) => {
             />
           );
         })}
-      </ViewContainer>
+      </View>
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+  },
+});

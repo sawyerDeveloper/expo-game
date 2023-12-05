@@ -26,13 +26,17 @@ export const Parallax = ({ children = null }) => {
   const pointerDown = (event) => {
     //  Multiplatform
     const newX = event.changedTouches
-      ? event.changedTouches[0].clientX
-      : event.nativeEvent.pageX;
+    ? event.changedTouches[0].clientX
+    : event.nativeEvent.pageX;
     goLeft.current = newX > width / 2;
   };
 
   return (
-    <View style={styles.container} onTouchStart={pointerDown}>
+    <View
+      style={styles.container}
+      onPointerDown={pointerDown}
+      onTouchStart={pointerDown}
+    >
       <Image
         contentPosition={{ left: x, top: 0 }}
         style={styles.background}
