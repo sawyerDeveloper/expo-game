@@ -12,9 +12,11 @@ export const GameSettingsContextProvider = ({ children }) => {
   const openSettings = () => {
     setShowSettings(!showSettings);
   };
+
   const clearData = () => {
     console.log('clearData');
   };
+
   return (
     <GameSettingsContext.Provider value={{ openSettings }}>
       <Modal
@@ -39,7 +41,6 @@ export const GameSettingsContextProvider = ({ children }) => {
           />
         </View>
       </Modal>
-
       {children}
     </GameSettingsContext.Provider>
   );
