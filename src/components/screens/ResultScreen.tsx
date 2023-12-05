@@ -1,4 +1,4 @@
-import { Button, Label, VSpacer, ViewContainer} from '../../designSystem/';
+import { Button, Label, VSpacer } from '../../designSystem/';
 import { LastResults } from './resultScreen/LastResults';
 import { Modal, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { useState } from 'react';
@@ -18,7 +18,7 @@ export const ResultScreen = ({ result, scores }: ResultScreenProps) => {
   const { win } = result;
   const [modalVisible, setModalVisible] = useState(true);
   return (
-    <ViewContainer>
+    <View style={styles.container}>
       <Modal
         presentationStyle='overFullScreen'
         animationType='slide'
@@ -46,11 +46,15 @@ export const ResultScreen = ({ result, scores }: ResultScreenProps) => {
       </Modal>
       <VSpacer height={10} />
       {scores && <LastResults results={scores.reverse()} />}
-    </ViewContainer>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   modal: {
     width: 300,
     margin: 40,
