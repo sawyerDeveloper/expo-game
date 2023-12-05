@@ -1,4 +1,4 @@
-export { AppContainer } from './layout/containers/AppContainer'
+export { AppContainer } from './layout/containers/AppContainer';
 export { ViewContainer } from './layout/containers/ViewContainer';
 export { ViewContainerAbsolute } from './layout/containers/ViewContainerAbsolute';
 export { ViewContainerFlex } from './layout/containers/ViewContainerFlex';
@@ -11,8 +11,4 @@ export { GameLoopContextProvider } from './context/gameLoop/GameLoopContextProvi
 export { GameAudioContextProvider } from './context/audio/GameAudioContextProvider';
 export { GameAudioContext } from './context/audio/GameAudioContext';
 export { AudioAssets } from './assets/audio';
-export {
-  GridElement,
-  createGridData,
-  GridDimensions,
-} from './utils/CreateGridData';
+export * from './utils/CreateGridData';
