@@ -13,16 +13,16 @@ export const GameAudioContextProvider = ({ children }) => {
       const { sound } = await Audio.Sound.createAsync(soundAsset);
       sound.setIsLoopingAsync(loop);
       loadedAudio[soundAsset] = sound;
-      sound.setIsMutedAsync(loadMuted)
+      sound.setIsMutedAsync(loadMuted);
       setLoadedAudio(loadedAudio);
     }
     await loadedAudio[soundAsset].playAsync();
   }
 
   const playMusic = (soundAsset) => {
-      pauseSound(currentMusic);
-      setCurrentMusic(soundAsset);
-      playSound(soundAsset, true, musicMuted);
+    pauseSound(currentMusic);
+    setCurrentMusic(soundAsset);
+    playSound(soundAsset, true, musicMuted);
   };
 
   const pauseSound = (soundAsset) => {
@@ -31,9 +31,9 @@ export const GameAudioContextProvider = ({ children }) => {
 
   const muteMusic = () => {
     setMusicMuted(!musicMuted);
-    loadedAudio[currentMusic]?.setIsMutedAsync(musicMuted)
-    if(!musicMuted){
-      loadedAudio[currentMusic].playAsync()
+    loadedAudio[currentMusic]?.setIsMutedAsync(musicMuted);
+    if (!musicMuted) {
+      loadedAudio[currentMusic].playAsync();
     }
   };
 

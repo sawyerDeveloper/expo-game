@@ -1,4 +1,4 @@
-import { AppContainer } from './src/designSystem/layout/containers/AppContainer';
+import { AppContainer } from './src/designSystem/';
 import { Game } from './src/Game';
 
 export default function App() {
