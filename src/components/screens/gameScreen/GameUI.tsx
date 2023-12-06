@@ -1,5 +1,10 @@
 import { useRef } from 'react';
-import { Button, VSpacer, SpriteSheet } from '../../../designSystem/';
+import {
+  Button,
+  VSpacer,
+  SpriteSheet,
+  ViewContainer,
+} from '../../../designSystem/';
 import {
   flamesSheet,
   flamesData,
@@ -23,7 +28,15 @@ export const GameUI = ({ win, lose }) => {
         onPress={() => lose(clock.current.currentTime)}
       />
       <VSpacer height={10} />
-      <Clock ref={clock} />
+      <ViewContainer
+        width={85}
+        height={75}
+        backgroundColor='#666'
+        cornerRadius={15}
+      >
+        <Clock ref={clock} />
+      </ViewContainer>
+
       <SpriteSheet fps={30} data={flamesData} image={flamesSheet} />
     </>
   );

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { DimensionValue, StyleSheet, View } from 'react-native';
+import { ColorValue, DimensionValue, StyleSheet, View } from 'react-native';
 
 type ViewContainerPropTypes = {
   children: ReactElement | ReactElement[];
@@ -7,6 +7,8 @@ type ViewContainerPropTypes = {
   width?: number | DimensionValue;
   absolute?: boolean;
   flex?: boolean;
+  backgroundColor?: ColorValue;
+  cornerRadius?: number;
 };
 
 export const ViewContainer = ({
@@ -15,6 +17,8 @@ export const ViewContainer = ({
   width = '100%',
   absolute = false,
   flex = false,
+  backgroundColor,
+  cornerRadius,
 }: ViewContainerPropTypes) => {
   return (
     <View
@@ -25,6 +29,8 @@ export const ViewContainer = ({
           height: height,
           width: width,
           position: absolute ? 'absolute' : 'relative',
+          backgroundColor: backgroundColor,
+          borderRadius: cornerRadius,
         },
       ]}
     >
