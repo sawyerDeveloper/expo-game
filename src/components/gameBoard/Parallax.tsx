@@ -1,8 +1,8 @@
-import { Image } from 'expo-image';
-import { StyleSheet, View, useWindowDimensions } from 'react-native';
-import { background } from '../../designSystem/assets/sprites/background';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { GameLoopContext } from '../../designSystem/context/gameLoop/GameLoopContext';
+import { StyleSheet, View, useWindowDimensions } from 'react-native';
+import { Image } from 'expo-image';
+import { GameLoopContext } from '../../designSystem/';
+import { background } from '../../designSystem/assets/sprites/background';
 
 export const Parallax = ({ children = null }) => {
   const { width } = useWindowDimensions();
@@ -32,7 +32,11 @@ export const Parallax = ({ children = null }) => {
   };
 
   return (
-    <View style={styles.container} onTouchStart={pointerDown}>
+    <View
+      style={styles.container}
+      onPointerDown={pointerDown}
+      onTouchStart={pointerDown}
+    >
       <Image
         contentPosition={{ left: x, top: 0 }}
         style={styles.background}

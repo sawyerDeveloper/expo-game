@@ -1,6 +1,4 @@
-import { VSpacer } from '../../designSystem/layout/VSpacer';
-import { Button } from '../../designSystem/ui/Button';
-import { Label } from '../../designSystem/ui/Label';
+import { Label, Button, VSpacer } from '../../designSystem/';
 
 export const IntroScreen = ({ startGrid, startParallax }) => {
   return (

@@ -1,12 +1,13 @@
 import { useRef } from 'react';
-import { Platform, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { Platform, useWindowDimensions } from 'react-native';
+import { Grid } from './gameBoard/Grid';
+import { Parallax } from './gameBoard/Parallax';
 import {
+  ViewContainerAbsolute,
   GridDimensions,
   GridElement,
   createGridData,
-} from '../designSystem/utils/CreateGridData';
-import { Grid } from './gameBoard/Grid';
-import { Parallax } from './gameBoard/Parallax';
+} from '../designSystem/';
 
 //  Value that reflects the number of grid elements
 export const GRID_SIZE: GridDimensions = { horizontal: 9, vertical: 16 };
@@ -30,14 +31,5 @@ export const GameBoard = ({ type }) => {
       break;
   }
 
-  return <View style={styles.container}>{board}</View>;
+  return <ViewContainerAbsolute>{board}</ViewContainerAbsolute>;
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignSelf: 'center',
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-  },
-});

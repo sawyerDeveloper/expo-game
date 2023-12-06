@@ -1,11 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
+import { AudioAssets, GameAudioContext, GameWrapper } from './designSystem/';
 import { GameScreen } from './components/screens/GameScreen';
 import { IntroScreen } from './components/screens/IntroScreen';
 import { ResultObj, ResultScreen } from './components/screens/ResultScreen';
 import { GameBoardType } from './components/GameBoard';
-import { GameAudioContext } from './designSystem/context/audio/GameAudioContext';
-import { AudioAssets } from './designSystem/assets/audio';
-import { GameWrapper } from './designSystem/layout/containers/GameWrapper';
 
 export const Game = () => {
   const [gameStarted, setGameStarted] = useState(false);

@@ -12,9 +12,11 @@ export const GameSettingsContextProvider = ({ children }) => {
   const openSettings = () => {
     setShowSettings(!showSettings);
   };
+
   const clearData = () => {
     console.log('clearData');
   };
+
   return (
     <GameSettingsContext.Provider value={{ openSettings }}>
       <Modal
@@ -26,12 +28,19 @@ export const GameSettingsContextProvider = ({ children }) => {
         <View style={[styles.container, { marginTop: height / 2 - 80 }]}>
           <Label text='Settings' fontFamily='neuroBold' color='#fff' />
           <VSpacer height={30} />
-          <Button title='Close' onPress={() => setShowSettings(false)} />
+          <Button
+            fontFamily='neuroBold'
+            title='Close'
+            onPress={() => setShowSettings(false)}
+          />
           <VSpacer height={30} />
-          <Button title='Clear Data' onPress={clearData} />
+          <Button
+            fontFamily='neuroBold'
+            title='Clear Data'
+            onPress={clearData}
+          />
         </View>
       </Modal>
-
       {children}
     </GameSettingsContext.Provider>
   );
