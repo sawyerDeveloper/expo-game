@@ -1,11 +1,15 @@
 import { View } from 'react-native';
 import { Label, ViewContainerAbsolute, GridElement } from '../../designSystem/';
+import { useContext } from 'react';
+import { InputTrackerContext } from '../../designSystem/context/input/InputTrackerContext';
 
 export interface GridDataProps {
   gridData: GridElement[];
 }
 
 export const Grid = ({ gridData }: GridDataProps) => {
+  const { x, y } = useContext(InputTrackerContext);
+  console.log(x,y)
   return (
     <ViewContainerAbsolute>
       {gridData.map((element: GridElement) => {

@@ -3,17 +3,18 @@ import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import { Image } from 'expo-image';
 import { GameLoopContext } from '../../designSystem/';
 import { background } from '../../designSystem/assets/sprites/background';
+import { InputTrackerContext } from '../../designSystem/context/input/InputTrackerContext';
 
 export const Parallax = ({ children = null }) => {
   const { width } = useWindowDimensions();
   const [animationID, setAnimationID] = useState(null);
   const gameLoop = useContext(GameLoopContext);
-  const [x, setX] = useState(0);
+  const [newX, setNewX] = useState(0);
   const goLeft = useRef(false);
 
   const moveBackground = () => {
     const newValue = goLeft.current ? -1 : 1;
-    setX((left) => left - newValue);
+    setNewX((left) => left - newValue);
   };
 
   useEffect(() => {
@@ -25,12 +26,13 @@ export const Parallax = ({ children = null }) => {
 
   const pointerDown = (event) => {
     //  Multiplatform
-    const newX = event.changedTouches
+    const newerX = event.changedTouches
       ? event.changedTouches[0].clientX
       : event.nativeEvent.pageX;
-    goLeft.current = newX > width / 2;
+    goLeft.current = newerX > width / 2;
   };
-
+const { x } = useContext(InputTrackerContext)
+console.log(x)
   return (
     <View
       style={styles.container}
@@ -38,7 +40,7 @@ export const Parallax = ({ children = null }) => {
       onTouchStart={pointerDown}
     >
       <Image
-        contentPosition={{ left: x, top: 0 }}
+        contentPosition={{ left: newX, top: 0 }}
         style={styles.background}
         source={background}
       />

@@ -9,6 +9,7 @@ export { Button } from './ui/Button';
 export { SpriteSheet } from './ui/SpriteSheet';
 export * from './context/gameLoop/GameLoopContext';
 export { GameLoopContextProvider } from './context/gameLoop/GameLoopContextProvider';
+export { InputTrackerContextProvider } from './context/input/InputTrackerContextProvider';
 export { GameAudioContextProvider } from './context/audio/GameAudioContextProvider';
 export { GameAudioContext } from './context/audio/GameAudioContext';
 export { AudioAssets } from './assets/audio';
