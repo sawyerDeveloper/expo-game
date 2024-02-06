@@ -11,22 +11,28 @@ import {
 
 //  Value that reflects the number of grid elements
 export const GRID_SIZE: GridDimensions = { horizontal: 9, vertical: 16 };
-export const GameBoardType = {
-  GRID: 'grid',
-  PARALLAX: 'parallax',
-};
-export const GameBoard = ({ type }) => {
+
+export enum GameBoardEnum {
+  GRID = 'grid',
+  PARALLAX = 'parallax',
+}
+
+interface GameBoardProps {
+  type: GameBoardEnum;
+}
+
+export const GameBoard = ({ type }: GameBoardProps) => {
   const { width, height } = useWindowDimensions();
-  let board;
+  let board: React.JSX.Element;
   switch (type) {
-    case GameBoardType.GRID:
+    case GameBoardEnum.GRID:
       const yOffSet = Platform.OS === 'web' ? 0 : 78;
       const gridData = useRef<Array<GridElement>>(
         createGridData(width, height - yOffSet, GRID_SIZE)
       );
       board = <Grid gridData={gridData.current} />;
       break;
-    case GameBoardType.PARALLAX:
+    case GameBoardEnum.PARALLAX:
       board = <Parallax />;
       break;
   }

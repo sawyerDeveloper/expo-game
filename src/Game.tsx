@@ -3,7 +3,7 @@ import { AudioAssets, GameAudioContext, GameWrapper } from './designSystem/';
 import { GameScreen } from './components/screens/GameScreen';
 import { IntroScreen } from './components/screens/IntroScreen';
 import { ResultObj, ResultScreen } from './components/screens/ResultScreen';
-import { GameBoardType } from './components/GameBoard';
+import { GameBoardEnum } from './components/GameBoard';
 
 export const Game = () => {
   const [gameStarted, setGameStarted] = useState(false);
@@ -15,13 +15,13 @@ export const Game = () => {
 
   const startGrid = () => {
     playSound(AudioAssets.effects.effect1);
-    setGameBoardType(GameBoardType.GRID);
+    setGameBoardType(GameBoardEnum.GRID);
     setGameStarted(true);
   };
 
   const startParallax = () => {
     playSound(AudioAssets.effects.effect2);
-    setGameBoardType(GameBoardType.PARALLAX);
+    setGameBoardType(GameBoardEnum.PARALLAX);
     setGameStarted(true);
   };
 
@@ -45,7 +45,7 @@ export const Game = () => {
 
   useEffect(() => {
     if (gameStarted) {
-      if (gameBoardType === GameBoardType.GRID) {
+      if (gameBoardType === GameBoardEnum.GRID) {
         playMusic(AudioAssets.music.grid);
       } else {
         playMusic(AudioAssets.music.parallax);
