@@ -4,8 +4,8 @@ import { GameUI } from './gameScreen/GameUI';
 
 interface GameScreenProps {
   gameBoardType: GameBoardEnum;
-  win: (score: number) => {};
-  lose: (score: number) => {};
+  win: (score: number) => void;
+  lose: (score: number) => void;
 }
 
 export const GameScreen = ({ gameBoardType, win, lose }: GameScreenProps) => {

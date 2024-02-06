@@ -12,8 +12,8 @@ import {
 import { Clock } from '../../Clock';
 
 interface GameUIProps {
-  win: (score: number) => {};
-  lose: (score: number) => {};
+  win: (score: number) => void;
+  lose: (score: number) => void;
 }
 export const GameUI = ({ win, lose }: GameUIProps) => {
   const clock = useRef(null);
