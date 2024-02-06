@@ -23,7 +23,7 @@ interface GameBoardProps {
 
 export const GameBoard = ({ type }: GameBoardProps) => {
   const { width, height } = useWindowDimensions();
-  let board;
+  let board: React.JSX.Element;
   switch (type) {
     case GameBoardEnum.GRID:
       const yOffSet = Platform.OS === 'web' ? 0 : 78;
