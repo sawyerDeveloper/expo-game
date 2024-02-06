@@ -11,7 +11,11 @@ import {
 } from '../../../designSystem/assets/sprites/flames';
 import { Clock } from '../../Clock';
 
-export const GameUI = ({ win, lose }) => {
+interface GameUIProps {
+  win: (score: number) => {};
+  lose: (score: number) => {};
+}
+export const GameUI = ({ win, lose }: GameUIProps) => {
   const clock = useRef(null);
 
   return (

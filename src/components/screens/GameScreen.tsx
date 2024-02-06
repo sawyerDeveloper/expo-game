@@ -1,8 +1,14 @@
 import { GameLoopContextProvider } from '../../designSystem/';
-import { GameBoard } from '../GameBoard';
+import { GameBoard, GameBoardEnum } from '../GameBoard';
 import { GameUI } from './gameScreen/GameUI';
 
-export const GameScreen = ({ gameBoardType, win, lose }) => {
+interface GameScreenProps {
+  gameBoardType: GameBoardEnum;
+  win: (score: number) => {};
+  lose: (score: number) => {};
+}
+
+export const GameScreen = ({ gameBoardType, win, lose }: GameScreenProps) => {
   return (
     <GameLoopContextProvider>
       <GameBoard type={gameBoardType} />
