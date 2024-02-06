@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native';
-import { Label } from '../../../designSystem/ui/Label';
+import { Label } from '../../../designSystem/';
 
 export const LastResults = ({ results }) => {
   return (

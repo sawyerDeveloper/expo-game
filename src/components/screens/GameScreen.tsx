@@ -1,33 +1,18 @@
-import { useRef } from 'react';
-import { Button } from '../../designSystem/ui/Button';
-import { VSpacer } from '../../designSystem/layout/VSpacer';
-import { SpriteSheet } from '../../designSystem/ui/SpriteSheet';
-import { GameLoopContextProvider } from '../../designSystem/context/gameLoop/GameLoopContextProvider';
-import { flamesSheet } from '../../designSystem/assets/sprites/flames';
-import flamesData from '../../designSystem/assets/sprites/flames/flames.json';
-import { Clock } from '../Clock';
-import { GameBoard } from '../GameBoard';
+import { GameLoopContextProvider } from '../../designSystem/';
+import { GameBoard, GameBoardEnum } from '../GameBoard';
+import { GameUI } from './gameScreen/GameUI';
 
-export const GameScreen = ({ gameBoardType, win, lose }) => {
-  const clock = useRef(null);
+interface GameScreenProps {
+  gameBoardType: GameBoardEnum;
+  win: (score: number) => void;
+  lose: (score: number) => void;
+}
 
+export const GameScreen = ({ gameBoardType, win, lose }: GameScreenProps) => {
   return (
     <GameLoopContextProvider>
       <GameBoard type={gameBoardType} />
-      <Button
-        title='Win'
-        fontFamily='neuroBold'
-        onPress={() => win(clock.current.currentTime)}
-      />
-      <VSpacer height={20} />
-      <Button
-        title='Lose'
-        fontFamily='neuroBold'
-        onPress={() => lose(clock.current.currentTime)}
-      />
-      <VSpacer height={10} />
-      <Clock ref={clock} />
-      <SpriteSheet fps={30} data={flamesData} image={flamesSheet} />
+      <GameUI win={win} lose={lose} />
     </GameLoopContextProvider>
   );
 };

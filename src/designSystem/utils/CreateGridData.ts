@@ -1,4 +1,4 @@
-export type GridElement = {
+export interface GridElement {
   x: number;
   y: number;
   width: number;
@@ -6,7 +6,7 @@ export type GridElement = {
   id: string;
 };
 
-export type GridDimensions = {
+export interface GridDimensions {
   horizontal: number;
   vertical: number;
 };

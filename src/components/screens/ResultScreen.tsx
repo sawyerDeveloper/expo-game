@@ -1,9 +1,7 @@
-import { Label } from '../../designSystem/ui/Label';
-import { VSpacer } from '../../designSystem/layout/VSpacer';
+import { Button, Label, VSpacer } from '../../designSystem/';
 import { LastResults } from './resultScreen/LastResults';
 import { Modal, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { useState } from 'react';
-import { Button } from '../../designSystem/ui/Button';
 
 export type ResultObj = {
   score: number;
